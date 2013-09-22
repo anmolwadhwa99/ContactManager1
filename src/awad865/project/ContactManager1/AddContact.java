@@ -1,6 +1,6 @@
 package awad865.project.ContactManager1;
 
-import com.example.contactmanager1.R;
+
 
 import android.os.Bundle;
 import android.app.Activity;

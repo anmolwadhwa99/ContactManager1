@@ -1,6 +1,6 @@
 package awad865.project.ContactManager1;
 
-import com.example.contactmanager1.R;
+
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,7 +15,7 @@ public class Favourites extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favourites);
-		
+
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 	}
@@ -31,11 +31,13 @@ public class Favourites extends Activity {
 		switch(item.getItemId()){
 		case R.id.action_list_of_contacts:
 			Intent contactIntent = new Intent(this,MainActivity.class);
+			contactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(contactIntent);
 			return true;
 
 		case R.id.action_groups:
 			Intent groupIntent = new Intent(this,Groups.class);
+			groupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(groupIntent);
 			return true;
 		default:

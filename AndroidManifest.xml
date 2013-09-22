@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.contactmanager1"
+    package="awad865.project.ContactManager1"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,7 +12,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/CustomTheme" >
         <activity
             android:name="awad865.project.ContactManager1.MainActivity"
             android:label="@string/app_name" >
@@ -37,6 +37,14 @@
         <activity
             android:name="awad865.project.ContactManager1.Favourites"
             android:label="@string/title_activity_favourites" >
+        </activity>
+        <activity
+            android:name="awad865.project.ContactManager1.ContactInformation"
+            android:label="@string/title_activity_contact_information" >
+        </activity>
+        <activity
+            android:name="com.example.contactmanager1.Random"
+            android:label="@string/title_activity_random" >
         </activity>
     </application>
 

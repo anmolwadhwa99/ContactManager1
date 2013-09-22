@@ -1,6 +1,6 @@
 package awad865.project.ContactManager1;
 
-import com.example.contactmanager1.R;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,11 +35,13 @@ public class Groups extends Activity {
 		switch(item.getItemId()){
 		case R.id.action_list_of_contacts:
 			Intent contactIntent = new Intent(this,MainActivity.class);
+			contactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(contactIntent);
 			return true;
 
 		case R.id.action_favourites:
 			Intent favouriteIntent = new Intent(this,Favourites.class);
+			favouriteIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(favouriteIntent);
 			return true;
 		default:

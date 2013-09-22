@@ -18,9 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.example.contactmanager1.R;
-
+import android.widget.AdapterView;
 
 public class MainActivity extends Activity {
 
@@ -48,7 +46,7 @@ public class MainActivity extends Activity {
 
 	private void setUpListView(){
 		List <Contact> displayList = new ArrayList<Contact>();
-		displayList.add(new Contact("Anmol","Wadhwa","53743632"));
+		displayList.add(new Contact("Anmol","Wadhwa","5374363"));
 		displayList.add(new Contact("Juhi","Goswami","4234232"));
 		displayList.add(new Contact("Laurence","Baldwick","243232"));
 
@@ -56,6 +54,7 @@ public class MainActivity extends Activity {
 
 		ListAdapter listAdapter = new CustomListAdapter(MainActivity.this,displayList);
 		listView.setAdapter(listAdapter);
+		listView.setOnItemClickListener(new listItemClickedListener());
 
 	}
 
@@ -100,11 +99,13 @@ public class MainActivity extends Activity {
 		switch(item.getItemId()){
 		case R.id.action_groups:
 			Intent groupIntent = new Intent(this,Groups.class);
+			groupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(groupIntent);
 			return true;
 
 		case R.id.action_favourites:
 			Intent favouriteIntent = new Intent(this,Favourites.class);
+			favouriteIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(favouriteIntent);
 		default:
 			return super.onOptionsItemSelected(item);
@@ -128,6 +129,19 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 
 	}
+}
+
+
+
+class listItemClickedListener implements AdapterView.OnItemClickListener{
+
+	@Override
+	public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
+		// TODO Auto-generated method stub
+		Intent contactInfoIntent = new Intent(clickedView.getContext(), ContactInformation.class);
+		clickedView.getContext().startActivity(contactInfoIntent);
+	}
+
 
 
 }

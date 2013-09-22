@@ -18,6 +18,12 @@
     <string name="heading_groups">Groups</string>
     <string name="heading_listOfContacts">List of Contacts</string>
     <string name="heading_favourites">Favourites</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="number">Number:</string>
+    <string name="contact_firstname">Anmol</string>
+    <string name="contact_lastname">Wadhwa</string>
+    <string name="contact_number">53743632</string>
 
     <string-array name="number_array">
         <item>MOBILE</item>
@@ -47,5 +53,7 @@
     <string name="title_activity_add_contact">AddContact</string>
     <string name="title_activity_add_group">AddGroup</string>
     <string name="title_activity_favourites">Favourites</string>
+    <string name="title_activity_contact_information">ContactInformation</string>
+    <string name="title_activity_random">Random</string>
 
 </resources>
