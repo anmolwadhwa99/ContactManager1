@@ -129,19 +129,25 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 
 	}
-}
 
+	public void moreOptions(View view){
+		Intent intent = new Intent(this,OptionActivity.class);
+		startActivity(intent);
 
-
-class listItemClickedListener implements AdapterView.OnItemClickListener{
-
-	@Override
-	public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
-		// TODO Auto-generated method stub
-		Intent contactInfoIntent = new Intent(clickedView.getContext(), ContactInformation.class);
-		clickedView.getContext().startActivity(contactInfoIntent);
 	}
 
 
 
+	class listItemClickedListener implements AdapterView.OnItemClickListener{
+
+		@Override
+		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
+			// TODO Auto-generated method stub
+			Intent contactInfoIntent = new Intent(clickedView.getContext(), ContactInformation.class);
+			clickedView.getContext().startActivity(contactInfoIntent);
+		}
+
+
+
+	}
 }

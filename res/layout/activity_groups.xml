@@ -48,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:background="@drawable/overflow" />
+            android:background="@drawable/overflow"
+            android:onClick="moreOptions" />
     </FrameLayout>
 
 </LinearLayout>

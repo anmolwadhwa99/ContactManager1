@@ -52,4 +52,11 @@ public class Favourites extends Activity {
 		startActivity(intent);
 
 	}
+
+	public void moreOptions(View view){
+		Intent intent = new Intent(this,OptionActivity.class);
+		startActivity(intent);
+
+	}
+
 }

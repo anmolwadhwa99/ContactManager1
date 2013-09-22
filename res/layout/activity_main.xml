@@ -48,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:background="@drawable/action_options" />
+            android:background="@drawable/action_options"
+            android:onClick="moreOptions" />
     </FrameLayout>
 
 </LinearLayout>

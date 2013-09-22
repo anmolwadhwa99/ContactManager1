@@ -55,5 +55,6 @@
     <string name="title_activity_favourites">Favourites</string>
     <string name="title_activity_contact_information">ContactInformation</string>
     <string name="title_activity_random">Random</string>
+    <string name="title_activity_option">OptionActivity</string>
 
 </resources>

@@ -15,6 +15,9 @@ public class AddContact extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
+		
+		getActionBar().setDisplayShowTitleEnabled(false);
+		getActionBar().setDisplayShowHomeEnabled(false);
 
 		//Spinner for the phone number field
 

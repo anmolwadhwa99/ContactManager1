@@ -1,17 +1,15 @@
 package awad865.project.ContactManager1;
 
-
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
-public class AddGroup extends Activity {
+public class OptionActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_group);
+		setContentView(R.layout.activity_option);
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 	}
@@ -19,7 +17,7 @@ public class AddGroup extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_group, menu);
+		getMenuInflater().inflate(R.menu.option, menu);
 		return true;
 	}
 
