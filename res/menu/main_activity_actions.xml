@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <!-- Settings, should always be in the overflow -->
+   
+    <item
+        android:id="@+id/action_groups"
+        android:showAsAction="always"
+        android:title="@string/action_groups"
+        android:layout_weight="1" />
+    <item
+        android:id="@+id/action_list_of_contacts"
+        android:showAsAction="always"
+        android:title="@string/action_listOfContacts"
+        android:layout_weight="1" />
+    <item
+         android:id="@+id/action_favourites"
+         android:showAsAction="always"
+         android:title="@string/action_favourites"
+         android:layout_weight="1" />
+    
+    
+</menu>
