@@ -155,11 +155,20 @@ public class MainActivity extends Activity {
 
 	class listItemClickedListener implements AdapterView.OnItemClickListener{
 
+
 		@Override
 		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
+			String fname=displayList.get(clickedViewPosition).get_firstName();
+			String lname=displayList.get(clickedViewPosition).get_lastName();
+
 			// TODO Auto-generated method stub
-			Intent contactInfoIntent = new Intent(clickedView.getContext(), ContactInformation.class);
-			clickedView.getContext().startActivity(contactInfoIntent);
+			Intent editContactIntent= new Intent(clickedView.getContext(), EditContact.class);
+			Bundle extras = new Bundle();
+
+			extras.putString("firstName", fname);
+			extras.putString("lastName", lname);
+			editContactIntent.putExtras(extras);
+			startActivity(editContactIntent);
 		}
 
 
