@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class EditContact extends Activity {
 	EditText firstName;
@@ -19,6 +21,48 @@ public class EditContact extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_contact);
+		//Spinner for the phone number field
+
+		Spinner spinner = (Spinner) findViewById(R.id.contact_number_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+				R.array.number_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
+
+
+		//Spinner for the email address field
+
+		spinner = (Spinner) findViewById(R.id.contact_email_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		adapter = ArrayAdapter.createFromResource(this, 
+				R.array.email_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
+
+		//Spinner for address field
+		spinner = (Spinner) findViewById(R.id.contact_address_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		adapter= ArrayAdapter.createFromResource(this,
+				R.array.address_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
+
+		//Spinner for the date field
+		spinner = (Spinner) findViewById(R.id.contact_date_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		adapter=ArrayAdapter.createFromResource(this, 
+				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		spinner.setAdapter(adapter);
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
 		number = (EditText)findViewById(R.id.edit_number);
@@ -80,7 +124,7 @@ public class EditContact extends Activity {
 				contact.set_address(address.getText().toString());
 				contact.set_date(date.getText().toString());
 				contact.set_email(email.getText().toString());
-				
+
 			}
 
 		}
