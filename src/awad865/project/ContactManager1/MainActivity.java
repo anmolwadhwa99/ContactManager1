@@ -22,10 +22,13 @@ import android.widget.AdapterView;
 
 public class MainActivity extends Activity {
 
+	//initialise private fields
 	private ListView listView;
 	private ImageButton button1;
 	private ImageButton button2;
 	private ImageButton button3;
+
+	public static List <Contact> displayList = new ArrayList<Contact>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,31 +36,37 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 
+		//link the image buttons to the .java file by using the findViewById() method
 		listView = (ListView)findViewById(R.id.main_contact_listview);
 		button1= (ImageButton)findViewById(R.id.button_search);
 		button2= (ImageButton)findViewById(R.id.button_addcontact);
 		button3= (ImageButton)findViewById(R.id.button_options);
 
 
-
 		setUpListView();
-
 	}
 
 	private void setUpListView(){
-		List <Contact> displayList = new ArrayList<Contact>();
-		displayList.add(new Contact("Anmol","Wadhwa","5374363"));
-		displayList.add(new Contact("Juhi","Goswami","4234232"));
-		displayList.add(new Contact("Laurence","Baldwick","243232"));
+		//initialise a generic list to store contact objects
+
+		if(displayList.size()==0){
+			displayList.add(new Contact("Anmol","Wadhwa","5374363","","",""));
+			displayList.add(new Contact("Juhi","Goswami","4234232","","",""));
+			displayList.add(new Contact("Laurence","Baldwick","243232","","",""));	
+
+		}
 
 
 
+		//
 		ListAdapter listAdapter = new CustomListAdapter(MainActivity.this,displayList);
 		listView.setAdapter(listAdapter);
 		listView.setOnItemClickListener(new listItemClickedListener());
 
 	}
 
+	//create a custom list adapter so that we can customize the list to suit 
+	//our needs
 	private class CustomListAdapter extends ArrayAdapter<Contact>{
 
 		private Context _context;
@@ -70,6 +79,7 @@ public class MainActivity extends Activity {
 			_contacts = contacts;
 
 		}
+
 
 		public View getView(int position, View convertView,ViewGroup parent){
 			//Create a layout inflater to inflate our xml layout for each item in the list
@@ -86,9 +96,9 @@ public class MainActivity extends Activity {
 			TextView number =  (TextView)listItemView.findViewById(R.id.list_item_number);
 
 			//Set the text for each textview (use the position arugment to find the appropriate element in the list)
-			firstName.setText(_contacts.get(position).getFirstName());
-			lastName.setText(_contacts.get(position).getLastName());
-			number.setText(_contacts.get(position).getNumber());
+			firstName.setText(_contacts.get(position).get_firstName());
+			lastName.setText(_contacts.get(position).get_lastName());
+			number.setText(_contacts.get(position).get_number());
 
 			return listItemView;
 		}
@@ -97,12 +107,15 @@ public class MainActivity extends Activity {
 
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
+		//if the group button is clicked on the action bar, then navigate 
+		//to the group activity
 		case R.id.action_groups:
 			Intent groupIntent = new Intent(this,Groups.class);
 			groupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(groupIntent);
 			return true;
-
+			//if the favourites button is clicked on the action bar, then navigate
+			//to the favourites activity
 		case R.id.action_favourites:
 			Intent favouriteIntent = new Intent(this,Favourites.class);
 			favouriteIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -123,13 +136,15 @@ public class MainActivity extends Activity {
 	}
 
 
-
+	//when the image button addContact is pressed on the MainActivity.java
+	//then this method is called and the user is navigated to the addContact activity
 	public void addContact(View view){
 		Intent intent = new Intent(this,AddContact.class);
 		startActivity(intent);
 
 	}
-
+	//when the image button moreOptions is pressed on the MainActivity.java
+	//then this method is called and the user is navigated to the OptionActivity activity
 	public void moreOptions(View view){
 		Intent intent = new Intent(this,OptionActivity.class);
 		startActivity(intent);

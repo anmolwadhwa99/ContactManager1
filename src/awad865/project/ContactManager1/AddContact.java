@@ -2,22 +2,38 @@ package awad865.project.ContactManager1;
 
 
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 
 public class AddContact extends Activity {
+	EditText firstName;
+	EditText lastName;
+	EditText number;
+	EditText address;
+	EditText  date;
+	EditText email;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-		
+
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
+
+		firstName = (EditText)findViewById(R.id.edit_first_name);
+		lastName = (EditText)findViewById(R.id.edit_last_name);
+		number = (EditText)findViewById(R.id.edit_number);
+		address = (EditText)findViewById(R.id.edit_address);
+		date = (EditText)findViewById(R.id.edit_date);
+		email =(EditText)findViewById(R.id.edit_email);
 
 		//Spinner for the phone number field
 
@@ -70,4 +86,25 @@ public class AddContact extends Activity {
 		return true;
 	}
 
+	public boolean onOptionsItemSelected(MenuItem item){
+
+		switch(item.getItemId()){
+
+		case R.id.action_save:
+			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
+			MainActivity.displayList.add(contact);
+			Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
+			startActivity(intent_save);
+			return true;
+
+		case R.id.action_cancel:
+			Intent intent_cancel = new Intent(this,MainActivity.class);
+			startActivity(intent_cancel);
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+	}
 }
