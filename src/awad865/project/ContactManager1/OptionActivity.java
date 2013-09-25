@@ -21,8 +21,8 @@ public class OptionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_option);
-		getActionBar().setDisplayShowTitleEnabled(false);
-		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
 
 
 		button1=(Button) findViewById(R.id.button_sort);

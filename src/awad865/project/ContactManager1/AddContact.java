@@ -17,7 +17,7 @@ public class AddContact extends Activity {
 	EditText lastName;
 	EditText number;
 	EditText address;
-	EditText  date;
+	EditText date;
 	EditText email;
 
 	@Override
@@ -25,8 +25,8 @@ public class AddContact extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
 
-		getActionBar().setDisplayShowTitleEnabled(false);
-		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(true);
 
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);

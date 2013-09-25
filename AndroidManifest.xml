@@ -28,11 +28,11 @@
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.AddContact"
-            android:label="@string/title_activity_add_contact" >
+            android:label="Add Contact" >
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.AddGroup"
-            android:label="@string/title_activity_add_group" >
+            android:label="Add Group" >
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.Favourites"
@@ -40,7 +40,7 @@
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.ContactInformation"
-            android:label="@string/title_activity_contact_information" >
+            android:label="View details" >
         </activity>
         <activity
             android:name="com.example.contactmanager1.Random"
@@ -48,11 +48,15 @@
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.OptionActivity"
-            android:label="@string/title_activity_option" >
+            android:label="More Options" >
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.EditContact"
             android:label="@string/title_activity_edit_contact" >
+        </activity>
+        <activity
+            android:name="awad865.project.ContactManager1.ViewContact"
+            android:label="View Contact" >
         </activity>
     </application>
 

@@ -120,6 +120,7 @@ public class MainActivity extends Activity {
 			Intent favouriteIntent = new Intent(this,Favourites.class);
 			favouriteIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(favouriteIntent);
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 
@@ -162,13 +163,13 @@ public class MainActivity extends Activity {
 			String lname=displayList.get(clickedViewPosition).get_lastName();
 
 			// TODO Auto-generated method stub
-			Intent editContactIntent= new Intent(clickedView.getContext(), EditContact.class);
+			Intent viewContactIntent= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();
 
 			extras.putString("firstName", fname);
 			extras.putString("lastName", lname);
-			editContactIntent.putExtras(extras);
-			startActivity(editContactIntent);
+			viewContactIntent.putExtras(extras);
+			startActivity(viewContactIntent);
 		}
 
 

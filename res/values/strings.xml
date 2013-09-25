@@ -64,5 +64,6 @@
     </string-array>
 
     <string name="title_activity_edit_contact">EditContact</string>
+    <string name="title_activity_view_contact">ViewContact</string>
 
 </resources>
