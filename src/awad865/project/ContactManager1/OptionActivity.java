@@ -1,14 +1,10 @@
 package awad865.project.ContactManager1;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 
 public class OptionActivity extends Activity {
@@ -23,11 +19,10 @@ public class OptionActivity extends Activity {
 		setContentView(R.layout.activity_option);
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayShowHomeEnabled(true);
-
-
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		button1=(Button) findViewById(R.id.button_sort);
 
-		
+
 	}
 
 
@@ -36,6 +31,16 @@ public class OptionActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.option, menu);
 		return true;
+	}
+
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }

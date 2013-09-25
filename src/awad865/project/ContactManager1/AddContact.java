@@ -5,6 +5,7 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -26,7 +27,6 @@ public class AddContact extends Activity {
 		setContentView(R.layout.activity_add_contact);
 
 		getActionBar().setDisplayShowTitleEnabled(true);
-		getActionBar().setDisplayShowHomeEnabled(true);
 
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
@@ -101,6 +101,8 @@ public class AddContact extends Activity {
 			Intent intent_cancel = new Intent(this,MainActivity.class);
 			startActivity(intent_cancel);
 			return true;
+
+
 
 		default:
 			return super.onOptionsItemSelected(item);

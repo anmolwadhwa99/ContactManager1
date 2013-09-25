@@ -12,10 +12,10 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/heading_favourites"
-             android:layout_marginTop="10dp"
-             android:layout_marginBottom="10dp"
-             android:textSize="20sp" />
+            android:textSize="20sp" />
     </FrameLayout>
 
     <ListView
@@ -38,20 +38,12 @@
             android:background="@drawable/search" />
 
         <ImageButton
-            android:id="@+id/button_addcontact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:background="@drawable/addcontact"
-            android:onClick="addContact" />
-
-        <ImageButton
             android:id="@+id/button_options"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:background="@drawable/overflow" 
-            android:onClick="moreOptions"/>
+            android:background="@drawable/overflow"
+            android:onClick="moreOptions" />
     </FrameLayout>
 
 </LinearLayout>
