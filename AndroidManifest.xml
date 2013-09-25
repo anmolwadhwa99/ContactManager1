@@ -32,8 +32,7 @@
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.AddGroup"
-            android:label="Add Group"
-            android:parentActivityName="awad865.project.ContactManager1.Groups" >
+            android:label="Add Group" >
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.Favourites"

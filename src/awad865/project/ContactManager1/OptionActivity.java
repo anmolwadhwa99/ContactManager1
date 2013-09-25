@@ -1,10 +1,12 @@
 package awad865.project.ContactManager1;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class OptionActivity extends Activity {
@@ -22,6 +24,23 @@ public class OptionActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		button1=(Button) findViewById(R.id.button_sort);
 
+		button1.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OptionActivity.this);
+
+				dialogBuilder.setTitle("Sort contact list by?");
+				dialogBuilder.setPositiveButton("Last name", null);
+				dialogBuilder.setNeutralButton("First name", null);
+				dialogBuilder.setNegativeButton("Phone number", null);
+
+
+				dialogBuilder.setCancelable(true);
+
+				dialogBuilder.create().show();
+			}
+		});
 
 	}
 
