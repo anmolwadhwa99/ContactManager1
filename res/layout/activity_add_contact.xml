@@ -16,24 +16,24 @@
         android:layout_width="337dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="5" >
+        android:weightSum="6" >
 
         <EditText
             android:id="@+id/edit_first_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_weight="4"
-            android:hint="Enter first name" />
+            android:layout_weight="5"
+            android:hint="Enter first name"
+            android:inputType="textCapSentences" />
 
         <ImageButton
             android:id="@+id/addimage"
             android:layout_width="0dp"
-            android:layout_height="51dp"
+            android:layout_height="58dp"
             android:layout_weight="1"
-            android:background="@drawable/addimage" />
+            android:background="@drawable/ic_social_person" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="337dp"
@@ -47,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="4"
-            android:hint="Enter last name" />
+            android:hint="Enter last name"
+            android:inputType="textCapSentences" />
     </LinearLayout>
 
     <TextView
@@ -68,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter number" />
+            android:hint="Enter number"
+            android:inputType="number" />
 
         <Spinner
             android:id="@+id/contact_number_spinner"
@@ -95,7 +97,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter email address" />
+            android:hint="Enter email address"
+            android:inputType="textEmailAddress" />
 
         <Spinner
             android:id="@+id/contact_email_spinner"
@@ -122,7 +125,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter address" />
+            android:hint="Enter address"
+            android:inputType="textPostalAddress" />
 
         <Spinner
             android:id="@+id/contact_address_spinner"
@@ -149,7 +153,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter date" />
+            android:hint="Enter date"
+            android:inputType="date" />
 
         <Spinner
             android:id="@+id/contact_date_spinner"
@@ -159,4 +164,3 @@
     </LinearLayout>
 
 </LinearLayout>
-   

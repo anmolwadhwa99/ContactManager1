@@ -6,14 +6,14 @@
         android:title="Settings">
         <item
             android:id="@+id/action_save"
+            android:icon="@drawable/ic_navigation_accept"
             android:orderInCategory="1"
-            android:showAsAction="always"
-            android:title="Save"/>
+            android:showAsAction="always"/>
         <item
             android:id="@+id/action_cancel"
+            android:icon="@drawable/ic_navigation_cancel"
             android:orderInCategory="2"
-            android:showAsAction="always"
-            android:title="Cancel"/>
+            android:showAsAction="always"/>
     </item>
 
 </menu>
