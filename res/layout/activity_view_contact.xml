@@ -1,0 +1,160 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddContact" >
+
+    <TextView
+        android:id="@+id/lbl_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Name" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <EditText
+            android:id="@+id/edit_first_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="4"
+            android:hint="Enter first name" />
+
+        <ImageButton
+            android:id="@+id/addimage"
+            android:layout_width="0dp"
+            android:layout_height="51dp"
+            android:layout_weight="1"
+            android:background="@drawable/addimage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <EditText
+            android:id="@+id/edit_last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="4"
+            android:hint="Enter last name" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbl_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <EditText
+            android:id="@+id/edit_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:hint="Enter number" />
+
+        <Spinner
+            android:id="@+id/contact_number_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbl_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <EditText
+            android:id="@+id/edit_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:hint="Enter email address" />
+
+        <Spinner
+            android:id="@+id/contact_email_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbl_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <EditText
+            android:id="@+id/edit_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:hint="Enter address" />
+
+        <Spinner
+            android:id="@+id/contact_address_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbl_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <EditText
+            android:id="@+id/edit_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2"
+            android:hint="Enter date" />
+
+        <Spinner
+            android:id="@+id/contact_date_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>
