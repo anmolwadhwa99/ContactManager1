@@ -2,6 +2,7 @@ package awad865.project.ContactManager1;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -22,7 +23,9 @@ public class OptionActivity extends Activity {
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayShowHomeEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		button1=(Button) findViewById(R.id.button_sort);
+		button3= (Button) findViewById(R.id.button_contactsToDisplay);
 
 		button1.setOnClickListener(new View.OnClickListener() {
 
@@ -39,6 +42,22 @@ public class OptionActivity extends Activity {
 				dialogBuilder.setCancelable(true);
 
 				dialogBuilder.create().show();
+			}
+		});
+
+		button3.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				AlertDialog.Builder dialog = new AlertDialog.Builder(OptionActivity.this);
+
+				dialog.setTitle("Display contact list by?");
+				dialog.setPositiveButton("Last name", null);
+				dialog.setNegativeButton("First name", null);
+
+				dialog.setCancelable(true);
+				dialog.create().show();
+
 			}
 		});
 
