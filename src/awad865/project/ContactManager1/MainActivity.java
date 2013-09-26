@@ -27,12 +27,14 @@ public class MainActivity extends Activity {
 	private ImageButton button1;
 	private ImageButton button2;
 	private ImageButton button3;
-
+	
+	//create public array list which stores all the contact objects that are to be displayed
 	public static List <Contact> displayList = new ArrayList<Contact>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//remove the title and the android icon from the actionbar
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 
@@ -47,7 +49,8 @@ public class MainActivity extends Activity {
 	}
 
 	private void setUpListView(){
-		//initialise a generic list to store contact objects
+		//adding contact objects inside the public array list displayList if only 
+		//size of this list is zero.
 
 		if(displayList.size()==0){
 			displayList.add(new Contact("Anmol","Wadhwa","5374363","","",""));
@@ -58,7 +61,7 @@ public class MainActivity extends Activity {
 
 
 
-		//
+		//creating list adapter to show the contacts from displayList to the ListView in activity_main.xml
 		ListAdapter listAdapter = new CustomListAdapter(MainActivity.this,displayList);
 		listView.setAdapter(listAdapter);
 		listView.setOnItemClickListener(new listItemClickedListener());
@@ -153,16 +156,20 @@ public class MainActivity extends Activity {
 	}
 
 
-
+	//method that implements AdapterView.OnItemClickListener, so if the user clicks on a contact inside
+	//list view then this method is invoked
 	class listItemClickedListener implements AdapterView.OnItemClickListener{
 
 
 		@Override
 		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
+			//we get the first name and last name of the contact in the displayList
 			String fname=displayList.get(clickedViewPosition).get_firstName();
 			String lname=displayList.get(clickedViewPosition).get_lastName();
 
 			// TODO Auto-generated method stub
+			//Using the bundle, we pass this information on to a new activity called ViewContact
+			//this is used for the view contact use case.
 			Intent viewContactIntent= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();
 

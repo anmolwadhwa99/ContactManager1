@@ -6,19 +6,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+//The purpose of this activity is that the user can add a new group inside the Contact Manager and he 
+//can group contacts together
 public class AddGroup extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_group);
+		//code to enable the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
 
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-
+		//if the cancel button is pressed by the user, this means that the user does not want
+		//to add a new group, and the user is returned to the list of groups.
 		case R.id.group_cancel:
 			Intent cancelIntent = new Intent(this,Groups.class);
 			startActivity(cancelIntent);
