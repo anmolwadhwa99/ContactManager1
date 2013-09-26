@@ -1,6 +1,8 @@
 package awad865.project.ContactManager1;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,6 +20,7 @@ public class EditContact extends Activity {
 	EditText  date;
 	EditText email;
 
+	private int pos;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,6 +90,7 @@ public class EditContact extends Activity {
 				address.setText(contact.get_address());
 				date.setText(contact.get_date());
 				email.setText(contact.get_email());
+				pos = MainActivity.displayList.indexOf(contact);
 			}
 
 		}
@@ -100,6 +104,70 @@ public class EditContact extends Activity {
 	}
 
 
+	public boolean onOptionsItemSelected(MenuItem item){
+
+		switch(item.getItemId()){
+
+		case R.id.action_edit_save:
+
+			AlertDialog.Builder dialog = new AlertDialog.Builder(EditContact.this);
+
+			dialog.setTitle("Edit");
+			dialog.setMessage("Save changes?");
+
+			dialog.setNegativeButton("Cancel", null);
+			dialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					// TODO Auto-generated method stub
+					Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
+					MainActivity.displayList.add(contact);
+					MainActivity.displayList.remove(pos);
+					Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
+					startActivity(intent_save);
+
+				}
+			});
+			dialog.setCancelable(true);
+			dialog.create().show();
+
+
+			return true;
+			
+		case R.id.action_edit_delete:
+
+			AlertDialog.Builder dialogDelete = new AlertDialog.Builder(EditContact.this);
+
+			dialogDelete.setTitle("Delete Contact?");
+			dialogDelete.setMessage("This cannot be undone!");
+
+			dialogDelete.setNegativeButton("Cancel", null);
+			dialogDelete.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					// TODO Auto-generated method stub
+					MainActivity.displayList.remove(pos);
+					Intent intent_delete = new Intent(getApplicationContext(),MainActivity.class);
+					startActivity(intent_delete);
+
+				}
+			});
+			dialogDelete.setCancelable(true);
+			dialogDelete.create().show();
+
+			
+
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+
+
+
 
 	public void editContactView(View view){
 
@@ -107,8 +175,7 @@ public class EditContact extends Activity {
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
 		number = (EditText)findViewById(R.id.edit_number);
-		address = (EditText)findViewById(R.id.edit_address);
-		date = (EditText)findViewById(R.id.edit_date);
+		address = (EditText)findViewById(R.id.edit_date);
 		email =(EditText)findViewById(R.id.edit_email);
 
 

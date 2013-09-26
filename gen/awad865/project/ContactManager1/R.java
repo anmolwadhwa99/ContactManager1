@@ -50,12 +50,13 @@ public final class R {
     public static final class id {
         public static final int action_button_groups=0x7f0a001e;
         public static final int action_cancel=0x7f0a0024;
-        public static final int action_edit_contact=0x7f0a002c;
-        public static final int action_edit_delete=0x7f0a0028;
+        public static final int action_edit_cancel=0x7f0a0028;
+        public static final int action_edit_contact=0x7f0a002d;
+        public static final int action_edit_delete=0x7f0a0029;
         public static final int action_edit_save=0x7f0a0027;
-        public static final int action_favourites=0x7f0a002b;
-        public static final int action_groups=0x7f0a0029;
-        public static final int action_list_of_contacts=0x7f0a002a;
+        public static final int action_favourites=0x7f0a002c;
+        public static final int action_groups=0x7f0a002a;
+        public static final int action_list_of_contacts=0x7f0a002b;
         public static final int action_save=0x7f0a0023;
         public static final int action_settings=0x7f0a0022;
         public static final int addimage=0x7f0a0002;

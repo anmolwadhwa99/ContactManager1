@@ -2,13 +2,16 @@
 
     <item
         android:id="@+id/action_edit_save"
+        android:icon="@drawable/ic_navigation_accept"
         android:orderInCategory="1"
-        android:showAsAction="always"
-        android:icon="@drawable/ic_navigation_accept"/>
+        android:showAsAction="always"/>
+    <item
+        android:id="@+id/action_edit_cancel"
+        android:icon="@drawable/ic_navigation_cancel"
+        android:orderInCategory="2"
+        android:showAsAction="always"/>
     <item
         android:id="@+id/action_edit_delete"
-        android:orderInCategory="2"
-        android:showAsAction="always"
-        android:icon="@drawable/ic_navigation_cancel"/>
-
+        android:showAsAction="never"
+        android:title="Delete"/>
 </menu>
