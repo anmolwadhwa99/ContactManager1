@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="awad865.project.ContactManager1.OptionActivity" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/OptionActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="210" x="82" y="1041"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="awad865.project.ContactManager1.MainActivity" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/MainActivity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="233" x="464" y="396"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="awad865.project.ContactManager1.Groups" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/Groups.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="233" x="59" y="623"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="awad865.project.ContactManager1.Favourites" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/Favourites.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="233" x="59" y="850"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="awad865.project.ContactManager1.AddGroup" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/AddGroup.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="133" width="233" x="59" y="396"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="awad865.project.ContactManager1.MainActivity.CustomListAdapter" 
+    project="ContactManager1" file="/ContactManager1/src/awad865/project/ContactManager1/MainActivity.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="115" width="230" x="796" y="1041"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="awad865.project.ContactManager1.AddContact" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/AddContact.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="116" width="219" x="973" y="205"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="awad865.project.ContactManager1.Contact" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/Contact.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="457" width="254" x="637" y="1196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="awad865.project.ContactManager1.MainActivity.listItemClickedListener" 
+    project="ContactManager1" file="/ContactManager1/src/awad865/project/ContactManager1/MainActivity.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="97" width="252" x="504" y="623"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="awad865.project.ContactManager1.EditContact" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/EditContact.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="151" width="233" x="1232" y="205"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="awad865.project.ContactManager1.ViewContact" project="ContactManager1" 
+    file="/ContactManager1/src/awad865/project/ContactManager1/ViewContact.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="128" width="233" x="1486" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="android.widget.EditText" project="ContactManager1" 
+    file="/home/b/Android-Development/adt-bundle-linux-x86-20130729/sdk/platforms/android-18/android.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="70" width="303" x="1323" y="1487"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="android.widget.Button" project="ContactManager1" 
+    file="/home/b/Android-Development/adt-bundle-linux-x86-20130729/sdk/platforms/android-18/android.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="54" width="303" x="103" y="1693"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="android.widget.ArrayAdapter" project="ContactManager1" 
+    file="/home/b/Android-Development/adt-bundle-linux-x86-20130729/sdk/platforms/android-18/android.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="352" x="817" y="850"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="android.widget.ListView" project="ContactManager1" 
+    file="/home/b/Android-Development/adt-bundle-linux-x86-20130729/sdk/platforms/android-18/android.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="65" width="319" x="374" y="850"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="android.widget.TextView" project="ContactManager1" 
+    file="/home/b/Android-Development/adt-bundle-linux-x86-20130729/sdk/platforms/android-18/android.jar" binary="true" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="265" x="931" y="1196"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <association id="17">    
+    <bendpoint x="91" y="1196"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="18" name="sortButton"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="21" name="listView"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="23">    
+    <bendpoint x="765" y="205"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="25">    
+    <bendpoint x="1451" y="396"/>    
+    <bendpoint x="1451" y="623"/>    
+    <bendpoint x="1451" y="850"/>    
+    <bendpoint x="1451" y="1041"/>    
+    <bendpoint x="1451" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="26" name="firstName"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="29">    
+    <bendpoint x="1579" y="205"/>    
+    <bendpoint x="1579" y="396"/>    
+    <bendpoint x="1579" y="623"/>    
+    <bendpoint x="1579" y="850"/>    
+    <bendpoint x="1579" y="1041"/>    
+    <bendpoint x="1579" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="30" name="number"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="32">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="33">    
+    <bendpoint x="28" y="850"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="34">    
+    <bendpoint x="1325" y="396"/>    
+    <bendpoint x="1283" y="623"/>    
+    <bendpoint x="1241" y="850"/>    
+    <bendpoint x="1205" y="1041"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="36">    
+    <bendpoint x="1262" y="396"/>    
+    <bendpoint x="1262" y="623"/>    
+    <bendpoint x="1283" y="850"/>    
+    <bendpoint x="1283" y="1041"/>    
+    <bendpoint x="1283" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="37" name="address"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <bendpoint x="1388" y="396"/>    
+    <bendpoint x="1388" y="623"/>    
+    <bendpoint x="1388" y="850"/>    
+    <bendpoint x="1388" y="1041"/>    
+    <bendpoint x="1388" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="40" name="email"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="45">    
+    <bendpoint x="385" y="623"/>    
+    <bendpoint x="343" y="850"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="46">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="47" name="_contacts"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <bendpoint x="1220" y="396"/>    
+    <bendpoint x="1241" y="623"/>    
+    <bendpoint x="1262" y="850"/>    
+    <bendpoint x="1262" y="1041"/>    
+    <bendpoint x="1262" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="50" name="firstName"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <bendpoint x="1600" y="205"/>    
+    <bendpoint x="1600" y="396"/>    
+    <bendpoint x="1600" y="623"/>    
+    <bendpoint x="1600" y="850"/>    
+    <bendpoint x="1600" y="1041"/>    
+    <bendpoint x="1600" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="53" name="email"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="55">    
+    <bendpoint x="364" y="623"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="57">    
+    <bendpoint x="1495" y="205"/>    
+    <bendpoint x="1495" y="396"/>    
+    <bendpoint x="1495" y="623"/>    
+    <bendpoint x="1495" y="850"/>    
+    <bendpoint x="1495" y="1041"/>    
+    <bendpoint x="1495" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="58" name="date"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="60">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <nesting id="62">    
+    <bendpoint x="786" y="623"/>    
+    <bendpoint x="786" y="850"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <dependency id="63">    
+    <bendpoint x="807" y="396"/>    
+    <bendpoint x="807" y="623"/>    
+    <bendpoint x="765" y="850"/>    
+    <bendpoint x="765" y="1041"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <association id="65">    
+    <bendpoint x="112" y="1196"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="66" name="displayContactListButton"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="68">    
+    <bendpoint x="744" y="850"/>    
+    <bendpoint x="744" y="1041"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="69">    
+    <bendpoint x="322" y="205"/>    
+    <bendpoint x="322" y="396"/>    
+    <bendpoint x="322" y="623"/>    
+    <bendpoint x="322" y="850"/>    
+    <bendpoint x="322" y="1041"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <association id="70">    
+    <bendpoint x="1516" y="205"/>    
+    <bendpoint x="1516" y="396"/>    
+    <bendpoint x="1516" y="623"/>    
+    <bendpoint x="1516" y="850"/>    
+    <bendpoint x="1516" y="1041"/>    
+    <bendpoint x="1516" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="71" name="firstName"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="73">    
+    <bendpoint x="343" y="623"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="74">    
+    <bendpoint x="1283" y="396"/>    
+    <bendpoint x="1304" y="623"/>    
+    <bendpoint x="1304" y="850"/>    
+    <bendpoint x="1304" y="1041"/>    
+    <bendpoint x="1304" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="75" name="number"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <bendpoint x="1346" y="396"/>    
+    <bendpoint x="1346" y="623"/>    
+    <bendpoint x="1346" y="850"/>    
+    <bendpoint x="1346" y="1041"/>    
+    <bendpoint x="1346" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="78" name="lastName"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <bendpoint x="428" y="623"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="81" name="listView"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="83">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="84">    
+    <bendpoint x="1199" y="396"/>    
+    <bendpoint x="1220" y="623"/>    
+    <bendpoint x="1220" y="850"/>    
+    <bendpoint x="1247" y="1041"/>    
+    <bendpoint x="1247" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="85" name="lastName"/>      
+      <multiplicity id="86" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="87">    
+    <bendpoint x="1241" y="396"/>    
+    <bendpoint x="1199" y="623"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="89">    
+    <bendpoint x="1558" y="205"/>    
+    <bendpoint x="1558" y="396"/>    
+    <bendpoint x="1558" y="623"/>    
+    <bendpoint x="1558" y="850"/>    
+    <bendpoint x="1558" y="1041"/>    
+    <bendpoint x="1558" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="90" name="lastName"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="92">    
+    <bendpoint x="904" y="396"/>    
+    <bendpoint x="904" y="623"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="93">    
+    <bendpoint x="1430" y="396"/>    
+    <bendpoint x="1430" y="623"/>    
+    <bendpoint x="1430" y="850"/>    
+    <bendpoint x="1430" y="1041"/>    
+    <bendpoint x="1430" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="94" name="number"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="98">    
+    <bendpoint x="1537" y="205"/>    
+    <bendpoint x="1537" y="396"/>    
+    <bendpoint x="1537" y="623"/>    
+    <bendpoint x="1537" y="850"/>    
+    <bendpoint x="1537" y="1041"/>    
+    <bendpoint x="1537" y="1196"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="99" name="address"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="101">    
+    <bendpoint x="786" y="396"/>    
+    <bendpoint x="786" y="205"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="102">    
+    <bendpoint x="473" y="623"/>    
+    <bendpoint x="723" y="850"/>    
+    <bendpoint x="723" y="1041"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="103" name="displayList"/>      
+      <multiplicity id="104" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="105">    
+    <bendpoint x="1409" y="396"/>    
+    <bendpoint x="1409" y="623"/>    
+    <bendpoint x="1409" y="850"/>    
+    <bendpoint x="1409" y="1041"/>    
+    <bendpoint x="1409" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="106" name="date"/>      
+      <multiplicity id="107" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <bendpoint x="1367" y="396"/>    
+    <bendpoint x="1367" y="623"/>    
+    <bendpoint x="1367" y="850"/>    
+    <bendpoint x="1367" y="1041"/>    
+    <bendpoint x="1367" y="1196"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="109" name="address"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="111">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <association id="112">    
+    <bendpoint x="1178" y="396"/>    
+    <bendpoint x="1178" y="623"/>    
+    <bendpoint x="1199" y="850"/>    
+    <bendpoint x="1226" y="1041"/>    
+    <bendpoint x="1226" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="113" name="email"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="115">    
+    <bendpoint x="1304" y="396"/>    
+    <bendpoint x="1325" y="623"/>    
+    <bendpoint x="1325" y="850"/>    
+    <bendpoint x="1325" y="1041"/>    
+    <bendpoint x="1325" y="1196"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="116" name="date"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="118">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
