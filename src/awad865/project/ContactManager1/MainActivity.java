@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,10 +23,7 @@ public class MainActivity extends Activity {
 
 	//initialise private fields
 	private ListView listView;
-	private ImageButton button1;
-	private ImageButton button2;
-	private ImageButton button3;
-	
+
 	//create public array list which stores all the contact objects that are to be displayed
 	public static List <Contact> displayList = new ArrayList<Contact>();
 	@Override
@@ -40,9 +36,7 @@ public class MainActivity extends Activity {
 
 		//link the image buttons to the .java file by using the findViewById() method
 		listView = (ListView)findViewById(R.id.main_contact_listview);
-		button1= (ImageButton)findViewById(R.id.button_search);
-		button2= (ImageButton)findViewById(R.id.button_addcontact);
-		button3= (ImageButton)findViewById(R.id.button_options);
+
 
 
 		setUpListView();
@@ -98,7 +92,7 @@ public class MainActivity extends Activity {
 			TextView lastName =  (TextView)listItemView.findViewById(R.id.list_item_lastname);
 			TextView number =  (TextView)listItemView.findViewById(R.id.list_item_number);
 
-			//Set the text for each textview (use the position arugment to find the appropriate element in the list)
+			//Set the text for each textview (use the position argument to find the appropriate element in the list)
 			firstName.setText(_contacts.get(position).get_firstName());
 			lastName.setText(_contacts.get(position).get_lastName());
 			number.setText(_contacts.get(position).get_number());

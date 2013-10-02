@@ -1,6 +1,6 @@
 package awad865.project.ContactManager1;
 
-
+//The purpose of this activity is to display a list of frequently contacted/viewed contacts
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,6 +16,7 @@ public class Favourites extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favourites);
 
+		//code that disables the launcher icon and title from the action bar
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 	}
@@ -29,12 +30,15 @@ public class Favourites extends Activity {
 
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
+		//if the list of contacts button is pressed (on the action bar) then navigate the user
+		//to the MainActivity
 		case R.id.action_list_of_contacts:
 			Intent contactIntent = new Intent(this,MainActivity.class);
 			contactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(contactIntent);
 			return true;
-
+			//if the "Groups" button is pressed on the action bar, then navigate the user
+			//to Groups activity.
 		case R.id.action_groups:
 			Intent groupIntent = new Intent(this,Groups.class);
 			groupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -46,12 +50,8 @@ public class Favourites extends Activity {
 		}
 	}
 
-
-	public void addContact(View view){
-		Intent intent = new Intent(this,AddContact.class);
-		startActivity(intent);
-
-	}
+	//If the user presses the overflow button (the button on the bottom right) then this
+	//method is triggered and the user is navigated to a new screen (the Option activity).
 
 	public void moreOptions(View view){
 		Intent intent = new Intent(this,OptionActivity.class);

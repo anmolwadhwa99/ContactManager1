@@ -2,36 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddGroup"
-    android:orientation="vertical" >
-   
-  
-   <TextView
-       android:id="@+id/lbl_group_name"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Group name"
-       android:layout_marginTop="5dp"/>
+    android:orientation="vertical"
+    tools:context=".AddGroup" >
 	
-	<EditText
-      android:id="@+id/edit_group"
-      android:layout_width="303dp"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="5dp"
-      android:hint="Enter group name" />
-	
-	<TextView
-       android:id="@+id/lbl_group_contact_name"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Person's name"/>
-	<EditText
-      android:id="@+id/edit_group_contact_name"
-      android:layout_width="303dp"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="5dp"
-      android:hint="Type person's name" />
-	       
-    
+    <TextView
+        android:id="@+id/lbl_group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/group_name" />
+
+    <EditText
+        android:id="@+id/edit_group"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/hint_group_name" />
+
+    <TextView
+        android:id="@+id/lbl_group_contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/person_name" />
+
+    <EditText
+        android:id="@+id/edit_group_contact_name"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/hint_person_name" />
 
 </LinearLayout>

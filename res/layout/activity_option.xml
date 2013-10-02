@@ -14,7 +14,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="More Options"
+            android:text="@string/heading_options"
             android:textSize="20sp" />
     </FrameLayout>
 
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Sort"
+        android:text="@string/button_sort"
         android:textSize="15sp" />
 
     <Button
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Help"
+        android:text="@string/button_help"
         android:textSize="15sp" />
 
     <Button
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Contacts to display"
+        android:text="@string/button_contacts_to_display"
         android:textSize="15sp" />
 
 </LinearLayout>

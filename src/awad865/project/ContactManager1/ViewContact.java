@@ -3,27 +3,32 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+//The purpose of this activity is that when the user clicks on a contact 
+//the user is navigated to another activity which displays that contact's
+//information
 public class ViewContact extends Activity {
 
-	EditText firstName;
-	EditText lastName;
-	EditText number;
-	EditText address;
-	EditText  date;
-	EditText email;
+	//declare private fields
+	private EditText firstName;
+	private EditText lastName;
+	private EditText number;
+	private EditText address;
+	private EditText  date;
+	private EditText email;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_contact);
 
+		//code to enable the title and the up button in the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+		//initialise private fields and make them non-editable
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		firstName.setKeyListener(null);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
@@ -37,11 +42,17 @@ public class ViewContact extends Activity {
 		email =(EditText)findViewById(R.id.edit_email);
 		email.setKeyListener(null);
 
+		//get the intent
 		Intent intent = getIntent();
 
+		//retrieve the information from list of contacts
 		Bundle extras = intent.getExtras();
 		String theFirstName = extras.getString("firstName");
 		String theLastName = extras.getString("lastName");
+
+		//have an enhanced for loop that checks to see if the retrieved information, matches the information
+		//in displayList (public array list in MainActivity.java). If it is then retrieve all that information
+		//about that specific contact and display to the user.
 
 		for(Contact contact : MainActivity.displayList){
 			if((contact.get_firstName().equals(theFirstName)) && (contact.get_lastName().equals(theLastName))){
@@ -63,10 +74,13 @@ public class ViewContact extends Activity {
 		getMenuInflater().inflate(R.menu.view_contact, menu);
 		return true;
 	}
+
 	public boolean onOptionsItemSelected(MenuItem item){
 
 		switch(item.getItemId()){
-
+		//if the user clicks on the edit button, then the private fields are initialised again
+		//the first name and last name is retrieved from the edit text in the xml and then transferred
+		//to the EditContact activity.
 		case R.id.action_edit_contact:
 			firstName = (EditText)findViewById(R.id.edit_first_name);
 			lastName = (EditText)findViewById(R.id.edit_last_name);
@@ -77,18 +91,15 @@ public class ViewContact extends Activity {
 
 			String fName = firstName.getText().toString();
 			String lName = lastName.getText().toString();
-
+			//new intent is created to start a new activity
 			Intent newIntent = new Intent(this,EditContact.class);
 
+			//the first name and last name is passed through to the next activity using a bundle
 			Bundle extras = new Bundle();
 			extras.putString("firstName", fName);
 			extras.putString("lastName", lName);
 			newIntent.putExtras(extras);
 			startActivity(newIntent);
-			return true;
-
-		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
 			return true;
 
 

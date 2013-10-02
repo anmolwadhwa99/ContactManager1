@@ -1,7 +1,9 @@
 package awad865.project.ContactManager1;
 
+
+//Contact class that creates contact objects which are stored in the public array list displayList
 public class Contact {
-	//private fields representating the information the contact can have
+	//private fields representing the information the contact can have
 	private String _firstName;
 	private String _middleName;
 	private String _lastName;
@@ -9,8 +11,7 @@ public class Contact {
 	private String _email;
 	private String _address;
 	private String _date;
-
-	//constructor to initialize the private fields
+	//constructor to initialize the private fields in the contact class 
 
 	public Contact(String firstName, String lastName, String number, String email,String address,String date){
 
@@ -23,7 +24,7 @@ public class Contact {
 		
 		
 	}
-	//add getter methods to return the first name, last name and number for each contact
+	//have getter and setter methods that set and return the value of all the private fields
 
 	public String get_firstName() {
 		return _firstName;

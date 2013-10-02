@@ -5,7 +5,6 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -14,20 +13,22 @@ import android.widget.Spinner;
 
 
 public class AddContact extends Activity {
-	EditText firstName;
-	EditText lastName;
-	EditText number;
-	EditText address;
-	EditText date;
-	EditText email;
+	//declare private fields
+	private EditText firstName;
+	private EditText lastName;
+	private EditText number;
+	private EditText address;
+	private EditText date;
+	private EditText email;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-
+		//code that enables the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
 
+		//intialise private fields
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
 		number = (EditText)findViewById(R.id.edit_number);
@@ -89,7 +90,9 @@ public class AddContact extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item){
 
 		switch(item.getItemId()){
-
+		//if the save button is pressed, then all the information is retrieved from the EditText fields
+		//and stored in the private fields and then a new contact object is created and added to the 
+		//array list displayList
 		case R.id.action_save:
 			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
 			MainActivity.displayList.add(contact);
@@ -97,6 +100,7 @@ public class AddContact extends Activity {
 			startActivity(intent_save);
 			return true;
 
+			//if the cancel button is pressed on the action bar then the user is navigate to MainActivity
 		case R.id.action_cancel:
 			Intent intent_cancel = new Intent(this,MainActivity.class);
 			startActivity(intent_cancel);

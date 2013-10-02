@@ -4,15 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddContact" >
-    
-    <!--  -->
 
     <TextView
         android:id="@+id/lbl_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="Name" />
+        android:text="@string/heading_name" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -26,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="5"
-            android:hint="Enter first name"
+            android:hint="@string/hint_firstname"
             android:inputType="textCapSentences" />
 
         <ImageButton
@@ -49,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="4"
-            android:hint="Enter last name"
+            android:hint="@string/hint_lastname"
             android:inputType="textCapSentences" />
     </LinearLayout>
 
@@ -57,7 +55,7 @@
         android:id="@+id/lbl_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number" />
+        android:text="@string/heading_number" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -71,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter number"
+            android:hint="@string/hint_number"
             android:inputType="number" />
 
         <Spinner
@@ -85,7 +83,7 @@
         android:id="@+id/lbl_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email" />
+        android:text="@string/heading_email" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -99,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter email address"
+            android:hint="@string/hint_email"
             android:inputType="textEmailAddress" />
 
         <Spinner
@@ -113,7 +111,7 @@
         android:id="@+id/lbl_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Address" />
+        android:text="@string/heading_address" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -127,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter address"
+            android:hint="@string/hint_address"
             android:inputType="textPostalAddress" />
 
         <Spinner
@@ -141,7 +139,7 @@
         android:id="@+id/lbl_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Event" />
+        android:text="@string/heading_event" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -155,7 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="Enter date"
+            android:hint="@string/hint_date"
             android:inputType="date" />
 
         <Spinner
