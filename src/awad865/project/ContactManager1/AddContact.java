@@ -4,6 +4,7 @@ package awad865.project.ContactManager1;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,13 @@ public class AddContact extends Activity {
 	private EditText address;
 	private EditText date;
 	private EditText email;
+	private Spinner numberSpinner;
+	private Spinner emailSpinner;
+	private Spinner addressSpinner;
+	private Spinner dateSpinner;
+	private DatabaseHandler databaseHandler;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,7 @@ public class AddContact extends Activity {
 		setContentView(R.layout.activity_add_contact);
 		//code that enables the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
+		databaseHandler = new DatabaseHandler(this);
 
 		//intialise private fields
 		firstName = (EditText)findViewById(R.id.edit_first_name);
@@ -38,46 +47,46 @@ public class AddContact extends Activity {
 
 		//Spinner for the phone number field
 
-		Spinner spinner = (Spinner) findViewById(R.id.contact_number_spinner);
+		numberSpinner = (Spinner) findViewById(R.id.contact_number_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 				R.array.number_array, android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+		numberSpinner.setAdapter(adapter);
 
 
 		//Spinner for the email address field
 
-		spinner = (Spinner) findViewById(R.id.contact_email_spinner);
+		emailSpinner = (Spinner) findViewById(R.id.contact_email_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter = ArrayAdapter.createFromResource(this, 
 				R.array.email_array, android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+		emailSpinner.setAdapter(adapter);
 
 		//Spinner for address field
-		spinner = (Spinner) findViewById(R.id.contact_address_spinner);
+		addressSpinner = (Spinner) findViewById(R.id.contact_address_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter= ArrayAdapter.createFromResource(this,
 				R.array.address_array, android.R.layout.simple_spinner_item);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+		addressSpinner.setAdapter(adapter);
 
 		//Spinner for the date field
-		spinner = (Spinner) findViewById(R.id.contact_date_spinner);
+		dateSpinner = (Spinner) findViewById(R.id.contact_date_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter=ArrayAdapter.createFromResource(this, 
 				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
 		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		// Apply the adapter to the spinner
-		spinner.setAdapter(adapter);
+		dateSpinner.setAdapter(adapter);
 	}
 
 	@Override
@@ -94,8 +103,17 @@ public class AddContact extends Activity {
 		//and stored in the private fields and then a new contact object is created and added to the 
 		//array list displayList
 		case R.id.action_save:
-			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
-			MainActivity.displayList.add(contact);
+			//Contact c = new Contact(firstName.getText().toString(), lastName.getText().toString(), number.getText().toString(), )
+			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString());
+			//MainActivity.displayList.add(contact);
+			//add to database
+			try {
+				databaseHandler.openDataBase();
+				databaseHandler.addContact(contact);
+				databaseHandler.close();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
 			Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
 			startActivity(intent_save);
 			return true;

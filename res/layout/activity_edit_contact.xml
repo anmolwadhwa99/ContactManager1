@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_weight="1.00"
-            android:background="@drawable/ic_social_person" />
+            android:background="@drawable/ic_social_person"/>
     </LinearLayout>
 
     <LinearLayout
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="@string/hint_email"
+            android:hint="@string/hint_address"
             android:inputType="textPostalAddress" />
 
         <Spinner
@@ -152,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_weight="2"
-            android:hint="@string/hint_email"
+            android:hint="@string/hint_date"
             android:inputType="date" />
 
         <Spinner

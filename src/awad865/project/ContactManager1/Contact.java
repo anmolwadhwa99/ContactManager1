@@ -5,22 +5,27 @@ package awad865.project.ContactManager1;
 public class Contact {
 	//private fields representing the information the contact can have
 	private String _firstName;
-	private String _middleName;
 	private String _lastName;
 	private String _number;
+	private String _numberType;
 	private String _email;
+	private String _emailType;
 	private String _address;
+	private String _addressType;
 	private String _date;
+	private String _dateType;
 	//constructor to initialize the private fields in the contact class 
 
-	public Contact(String firstName, String lastName, String number, String email,String address,String date){
-
+	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String address, String addressType, String date, String dateType){
 		set_firstName(firstName);
 		set_lastName(lastName);
 		set_number(number);
 		set_email(email);
 		set_address(address);
 		set_date(date);
+		set_numberType(numberType);
+		set_emailType(emailType);	
+		set_dateType(dateType);
 		
 		
 	}
@@ -32,14 +37,6 @@ public class Contact {
 
 	public void set_firstName(String _firstName) {
 		this._firstName = _firstName;
-	}
-
-	public String get_middleName() {
-		return _middleName;
-	}
-
-	public void set_middleName(String _middleName) {
-		this._middleName = _middleName;
 	}
 
 	public String get_lastName() {
@@ -80,6 +77,38 @@ public class Contact {
 
 	public void set_date(String _date) {
 		this._date = _date;
+	}
+
+	public String get_dateType() {
+		return _dateType;
+	}
+
+	public void set_dateType(String _dateType) {
+		this._dateType = _dateType;
+	}
+
+	public String get_addressType() {
+		return _addressType;
+	}
+
+	public void set_addressType(String _addressType) {
+		this._addressType = _addressType;
+	}
+
+	public String get_emailType() {
+		return _emailType;
+	}
+
+	public void set_emailType(String _emailType) {
+		this._emailType = _emailType;
+	}
+
+	public String get_numberType() {
+		return _numberType;
+	}
+
+	public void set_numberType(String _numberType) {
+		this._numberType = _numberType;
 	}
 
 

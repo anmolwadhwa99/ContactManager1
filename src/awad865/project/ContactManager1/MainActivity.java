@@ -1,12 +1,14 @@
 package awad865.project.ContactManager1;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,6 +25,7 @@ public class MainActivity extends Activity {
 
 	//initialise private fields
 	private ListView listView;
+	private DatabaseHandler databaseHandler;
 
 	//create public array list which stores all the contact objects that are to be displayed
 	public static List <Contact> displayList = new ArrayList<Contact>();
@@ -36,7 +39,12 @@ public class MainActivity extends Activity {
 
 		//link the image buttons to the .java file by using the findViewById() method
 		listView = (ListView)findViewById(R.id.main_contact_listview);
-
+		databaseHandler = new DatabaseHandler(this);
+		try {
+			databaseHandler.createDataBase();
+		} catch (IOException ioe) {
+			throw new Error("Unable to create database");
+		}
 
 
 		setUpListView();
@@ -46,13 +54,18 @@ public class MainActivity extends Activity {
 		//adding contact objects inside the public array list displayList if only 
 		//size of this list is zero.
 
-		if(displayList.size()==0){
+		/*if(displayList.size()==0){
 			displayList.add(new Contact("Anmol","Wadhwa","5374363","","",""));
 			displayList.add(new Contact("Juhi","Goswami","4234232","","",""));
 			displayList.add(new Contact("Laurence","Baldwick","243232","","",""));	
-
+		}*/
+		try {
+			databaseHandler.openDataBase();
+			displayList = databaseHandler.getContacts();
+			databaseHandler.close();
+		} catch(SQLException sqle) {
+			throw sqle;
 		}
-
 
 
 		//creating list adapter to show the contacts from displayList to the ListView in activity_main.xml
