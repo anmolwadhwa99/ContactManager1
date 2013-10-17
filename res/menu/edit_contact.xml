@@ -12,6 +12,7 @@
         android:showAsAction="always"/>
     <item
         android:id="@+id/action_edit_delete"
-        android:showAsAction="never"
-        android:title="Delete"/>
+        android:showAsAction="always"
+        android:icon="@drawable/content_discard"
+        android:orderInCategory="3"/>
 </menu>

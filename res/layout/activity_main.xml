@@ -4,12 +4,32 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/main_activity_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/action_listOfContacts"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_heading_main_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
+
     <ListView
         android:id="@+id/main_contact_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1" 
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"
+        android:layout_weight="1" />
 
     <FrameLayout
         android:layout_width="fill_parent"
