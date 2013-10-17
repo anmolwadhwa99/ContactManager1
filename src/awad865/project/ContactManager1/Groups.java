@@ -78,15 +78,17 @@ public class Groups extends Activity {
 	//if the user presses the add group image button (bottom of the screen (center) in groups activity) then
 	//this method is invoked and a new activity (called addGroup is started).
 	public void addGroup(View view){
-		Intent intent = new Intent(this,AddGroup.class);
-		startActivity(intent);
+		Intent group_intent = new Intent(this,AddGroup.class);
+		group_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(group_intent);
 	}
 
 	//when the image button moreOptions is pressed on the MainActivity.java
 	//then this method is called and the user is navigated to the OptionActivity activity
 	public void moreOptions(View view){
-		Intent intent = new Intent(this,OptionActivity.class);
-		startActivity(intent);
+		Intent option_intent = new Intent(this,OptionActivity.class);
+		option_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(option_intent);
 
 	}
 

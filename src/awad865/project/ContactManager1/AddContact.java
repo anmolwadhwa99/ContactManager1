@@ -117,12 +117,14 @@ public class AddContact extends Activity {
 				throw sqle;
 			}
 			Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
+			intent_save.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent_save);
 			return true;
 
 			//if the cancel button is pressed on the action bar then the user is navigate to MainActivity
 		case R.id.action_cancel:
 			Intent intent_cancel = new Intent(this,MainActivity.class);
+			intent_cancel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent_cancel);
 			return true;
 		case android.R.id.home:

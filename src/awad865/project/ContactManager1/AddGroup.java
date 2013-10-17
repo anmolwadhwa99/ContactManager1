@@ -27,6 +27,7 @@ public class AddGroup extends Activity {
 		//to add a new group, and the user is returned to the list of groups.
 		case R.id.group_cancel:
 			Intent cancelIntent = new Intent(this,Groups.class);
+			cancelIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(cancelIntent);
 
 		case android.R.id.home:

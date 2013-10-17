@@ -9,8 +9,16 @@
         android:id="@+id/lbl_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/heading_name" />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/heading_name"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -22,30 +30,31 @@
             android:id="@+id/edit_first_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="5"
-            android:hint="@string/hint_firstname" />
+            android:hint="@string/hint_firstname"
+            android:inputType="textCapSentences" />
 
         <ImageButton
             android:id="@+id/addimage"
             android:layout_width="0dp"
             android:layout_height="58dp"
-            android:layout_weight="1.00"
-            android:background="@drawable/ic_social_person"/>
+            android:layout_weight="1"
+            android:background="@drawable/ic_social_person" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="337dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="5" >
+        android:weightSum="6" >
 
         <EditText
             android:id="@+id/edit_last_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:hint="@string/hint_lastname"
             android:inputType="textCapSentences" />
     </LinearLayout>
@@ -54,7 +63,15 @@
         android:id="@+id/lbl_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_number" />
+        android:layout_marginLeft="5dp"
+        android:text="@string/heading_number"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_number"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -67,6 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="2"
             android:hint="@string/hint_number"
             android:inputType="number" />
@@ -75,6 +93,7 @@
             android:id="@+id/contact_number_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -82,7 +101,15 @@
         android:id="@+id/lbl_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_email" />
+        android:layout_marginLeft="5dp"
+        android:text="@string/heading_email"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_email"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -95,6 +122,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="2"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress" />
@@ -103,6 +131,7 @@
             android:id="@+id/contact_email_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -110,7 +139,15 @@
         android:id="@+id/lbl_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_address" />
+        android:layout_marginLeft="5dp"
+        android:text="@string/heading_address"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_address"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -123,6 +160,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="2"
             android:hint="@string/hint_address"
             android:inputType="textPostalAddress" />
@@ -131,6 +169,7 @@
             android:id="@+id/contact_address_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -138,7 +177,15 @@
         android:id="@+id/lbl_event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_event" />
+        android:layout_marginLeft="5dp"
+        android:text="@string/heading_event"
+        android:textColor="#0ab2ea" />
+
+    <View
+        android:id="@+id/view_event"
+        android:layout_width="wrap_content"
+        android:layout_height="1.5dp"
+        android:background="@drawable/blue_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -151,6 +198,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="2"
             android:hint="@string/hint_date"
             android:inputType="date" />

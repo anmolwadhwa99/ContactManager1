@@ -94,14 +94,15 @@ public class ViewContact extends Activity {
 			String fName = firstName.getText().toString();
 			String lName = lastName.getText().toString();
 			//new intent is created to start a new activity
-			Intent newIntent = new Intent(this,EditContact.class);
+			Intent edit_intent = new Intent(this,EditContact.class);
+			edit_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
 			//the first name and last name is passed through to the next activity using a bundle
 			Bundle extras = new Bundle();
 			extras.putString("firstName", fName);
 			extras.putString("lastName", lName);
-			newIntent.putExtras(extras);
-			startActivity(newIntent);
+			edit_intent.putExtras(extras);
+			startActivity(edit_intent);
 			return true;
 
 		case android.R.id.home:

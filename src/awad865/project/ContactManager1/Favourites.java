@@ -54,8 +54,9 @@ public class Favourites extends Activity {
 	//method is triggered and the user is navigated to a new screen (the Option activity).
 
 	public void moreOptions(View view){
-		Intent intent = new Intent(this,OptionActivity.class);
-		startActivity(intent);
+		Intent option_intent = new Intent(this,OptionActivity.class);
+		option_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(option_intent);
 
 	}
 

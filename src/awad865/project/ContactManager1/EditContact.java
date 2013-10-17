@@ -172,6 +172,7 @@ public class EditContact extends Activity {
 						throw sqle;
 					}
 					Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
+					intent_save.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent_save);
 					
 
@@ -207,6 +208,7 @@ public class EditContact extends Activity {
 					}
 					MainActivity.displayList.remove(pos);
 					Intent intent_delete = new Intent(getApplicationContext(),MainActivity.class);
+					intent_delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent_delete);
 
 				}
@@ -221,8 +223,9 @@ public class EditContact extends Activity {
 			return super.onOptionsItemSelected(item);
 
 		case R.id.action_edit_cancel:
-			Intent intent = new Intent(this,MainActivity.class);
-			startActivity(intent);
+			Intent cancel_intent = new Intent(this,MainActivity.class);
+			cancel_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(cancel_intent);
 			return true;
 		}
 	}
