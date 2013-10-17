@@ -3,6 +3,7 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class ViewContact extends Activity {
 
 		//code to enable the title and the up button in the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 		//initialise private fields and make them non-editable
@@ -102,6 +104,9 @@ public class ViewContact extends Activity {
 			startActivity(newIntent);
 			return true;
 
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
 
 		default:
 			return super.onOptionsItemSelected(item);

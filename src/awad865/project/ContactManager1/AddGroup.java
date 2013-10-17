@@ -3,6 +3,7 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,6 +17,7 @@ public class AddGroup extends Activity {
 		setContentView(R.layout.activity_add_group);
 		//code to enable the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 	}
 
@@ -26,6 +28,11 @@ public class AddGroup extends Activity {
 		case R.id.group_cancel:
 			Intent cancelIntent = new Intent(this,Groups.class);
 			startActivity(cancelIntent);
+
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+
 
 
 		default:

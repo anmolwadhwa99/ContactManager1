@@ -3,7 +3,9 @@ package awad865.project.ContactManager1;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -20,6 +22,7 @@ public class OptionActivity extends Activity {
 		//code to enable the launcher icon, heading and the up button on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayShowHomeEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 		//initialise a value to the private fields by using the findViewById() method.
@@ -69,6 +72,16 @@ public class OptionActivity extends Activity {
 			}
 		});
 
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 

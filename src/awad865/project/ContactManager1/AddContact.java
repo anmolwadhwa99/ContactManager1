@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,7 @@ public class AddContact extends Activity {
 		setContentView(R.layout.activity_add_contact);
 		//code that enables the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		databaseHandler = new DatabaseHandler(this);
 
 		//intialise private fields
@@ -122,6 +124,9 @@ public class AddContact extends Activity {
 		case R.id.action_cancel:
 			Intent intent_cancel = new Intent(this,MainActivity.class);
 			startActivity(intent_cancel);
+			return true;
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
 			return true;
 
 

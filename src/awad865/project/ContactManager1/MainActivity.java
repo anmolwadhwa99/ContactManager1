@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class MainActivity extends Activity {
 	//initialise private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
+	private TextView activityHeading;
 
 	//create public array list which stores all the contact objects that are to be displayed
 	public static List <Contact> displayList = new ArrayList<Contact>();
@@ -36,9 +38,12 @@ public class MainActivity extends Activity {
 		//remove the title and the android icon from the actionbar
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
+		
 
 		//link the image buttons to the .java file by using the findViewById() method
 		listView = (ListView)findViewById(R.id.main_contact_listview);
+		activityHeading = (TextView) findViewById(R.id.mainActivty_heading);
+		activityHeading.setTextColor(Color.parseColor("#0ab2ea"));
 		databaseHandler = new DatabaseHandler(this);
 		try {
 			databaseHandler.createDataBase();
