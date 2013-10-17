@@ -121,13 +121,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 	
 	// Deleting single item
-		public void deleteContact(Contact contact) {
+		public void deleteContact(String firstName, String lastName) {
 			SQLiteDatabase db = this.getWritableDatabase();
 			db.delete(TABLE_CONTACT,
 					FIRST_NAME + "=? AND " + LAST_NAME + "=?", 
-					new String[] {contact.get_firstName(), contact.get_lastName()});
+					new String[] {firstName, lastName});
 			db.close();
 		}
+		
+		public int updateContact(Contact contact, String firstName, String lastName) {
+			SQLiteDatabase db = this.getWritableDatabase();
+			ContentValues values = new ContentValues();
+			values.put(FIRST_NAME, contact.get_firstName()); 
+			values.put(LAST_NAME, contact.get_lastName());
+			values.put(NUMBER, contact.get_number()); 
+			values.put(NUMBER_TYPE, contact.get_numberType());
+			values.put(EMAIL, contact.get_email()); 
+			values.put(EMAIL_TYPE, contact.get_emailType());
+			values.put(ADDRESS, contact.get_address()); 
+			values.put(ADDRESS_TYPE, contact.get_addressType());
+			values.put(DATE, contact.get_date()); 
+			values.put(DATE_TYPE, contact.get_dateType());
+			// updating row
+			return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
+					new String[] {firstName, lastName});
+		}
+
 		
 		public List<Contact> getContacts() {
 			List<Contact> contactList = new ArrayList<Contact>();

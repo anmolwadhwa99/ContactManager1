@@ -10,7 +10,8 @@
         android:id="@+id/lbl_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/heading_name" />
+        android:text="@string/heading_name" 
+        android:textColor="#0ab2ea"/>
 
     <View
         android:id="@+id/view1"

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,18 +19,24 @@ public class EditContact extends Activity {
 	private EditText lastName;
 	private EditText number;
 	private EditText address;
-	private EditText  date;
+	private EditText date;
 	private EditText email;
+	private Spinner numberSpinner;
+	private Spinner emailSpinner;
+	private Spinner addressSpinner;
+	private Spinner dateSpinner;
+	private DatabaseHandler databaseHandler;
+	private Contact currentContact;
 
 	private int pos;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_contact);
-
+		databaseHandler = new DatabaseHandler(this);
 		//Spinner for the phone number field
 
-		Spinner numberSpinner = (Spinner) findViewById(R.id.contact_number_spinner);
+		numberSpinner = (Spinner) findViewById(R.id.contact_number_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 				R.array.number_array, android.R.layout.simple_spinner_item);
@@ -41,7 +48,7 @@ public class EditContact extends Activity {
 
 		//Spinner for the email address field
 
-		Spinner emailSpinner = (Spinner) findViewById(R.id.contact_email_spinner);
+		emailSpinner = (Spinner) findViewById(R.id.contact_email_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter = ArrayAdapter.createFromResource(this, 
 				R.array.email_array, android.R.layout.simple_spinner_item);
@@ -51,7 +58,7 @@ public class EditContact extends Activity {
 		emailSpinner.setAdapter(adapter);
 
 		//Spinner for address field
-		Spinner addressSpinner = (Spinner) findViewById(R.id.contact_address_spinner);
+		addressSpinner = (Spinner) findViewById(R.id.contact_address_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter= ArrayAdapter.createFromResource(this,
 				R.array.address_array, android.R.layout.simple_spinner_item);
@@ -61,7 +68,7 @@ public class EditContact extends Activity {
 		addressSpinner.setAdapter(adapter);
 
 		//Spinner for the date field
-		Spinner dateSpinner = (Spinner) findViewById(R.id.contact_date_spinner);
+		dateSpinner = (Spinner) findViewById(R.id.contact_date_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter=ArrayAdapter.createFromResource(this, 
 				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
@@ -93,6 +100,7 @@ public class EditContact extends Activity {
 		//from the EditText is retrieved.
 		for(Contact contact : MainActivity.displayList){
 			if((contact.get_firstName().equals(theFirstName)) && (contact.get_lastName().equals(thelastName))){
+				currentContact = contact;
 				firstName.setText(contact.get_firstName());
 				lastName.setText(contact.get_lastName());
 				number.setText(contact.get_number());
@@ -100,6 +108,14 @@ public class EditContact extends Activity {
 				date.setText(contact.get_date());
 				email.setText(contact.get_email());
 				pos = MainActivity.displayList.indexOf(contact);
+				int numPos = ((ArrayAdapter<CharSequence>) numberSpinner.getAdapter()).getPosition(contact.get_numberType());
+				numberSpinner.setSelection(numPos);
+				int emailPos = ((ArrayAdapter<CharSequence>) emailSpinner.getAdapter()).getPosition(contact.get_emailType());
+				emailSpinner.setSelection(emailPos);
+				int addPos = ((ArrayAdapter<CharSequence>) addressSpinner.getAdapter()).getPosition(contact.get_addressType());
+				addressSpinner.setSelection(addPos);
+				int datePos = ((ArrayAdapter<CharSequence>) dateSpinner.getAdapter()).getPosition(contact.get_dateType());
+				dateSpinner.setSelection(datePos);
 			}
 
 		}
@@ -124,7 +140,7 @@ public class EditContact extends Activity {
 			AlertDialog.Builder dialog = new AlertDialog.Builder(EditContact.this);
 
 			dialog.setTitle("Edit");
-			dialog.setMessage("Save changes?");
+			dialog.setMessage("Do you wish to save your changes?");
 
 			dialog.setNegativeButton("Cancel", null);
 			dialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
@@ -135,8 +151,29 @@ public class EditContact extends Activity {
 					//Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
 					//MainActivity.displayList.add(contact);
 					//MainActivity.displayList.remove(pos);
+					
+					String retrieveFirstName = firstName.getText().toString();
+					String retrieveLastName = lastName.getText().toString();
+					String retrieveNumber = number.getText().toString();
+					String retrieveEmail = email.getText().toString();
+					String retrieveAddress = address.getText().toString();
+					String retrieveDate = date.getText().toString();
+					String retrieveNumberSpinner = numberSpinner.getSelectedItem().toString();
+					String retrieveEmailSpinner = emailSpinner.getSelectedItem().toString();
+					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
+					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
+					Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveAddress, retrieveAddressSpinner, retrieveDate, retrieveDateSpinner);
+					
+					try {
+						databaseHandler.openDataBase();
+						databaseHandler.updateContact(replaceContact, currentContact.get_firstName(), currentContact.get_lastName());
+						databaseHandler.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
 					Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
 					startActivity(intent_save);
+					
 
 				}
 			});
@@ -153,7 +190,7 @@ public class EditContact extends Activity {
 			AlertDialog.Builder dialogDelete = new AlertDialog.Builder(EditContact.this);
 
 			dialogDelete.setTitle("Delete Contact?");
-			dialogDelete.setMessage("This cannot be undone!");
+			dialogDelete.setMessage("Are you sure you would like to delete this contact ?");
 
 			dialogDelete.setNegativeButton("Cancel", null);
 			dialogDelete.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
@@ -161,6 +198,13 @@ public class EditContact extends Activity {
 				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					// TODO Auto-generated method stub
+					try {
+						databaseHandler.openDataBase();
+						databaseHandler.deleteContact(firstName.getText().toString(), lastName.getText().toString());
+						databaseHandler.close();
+					} catch (SQLException sqle) {
+						throw sqle;
+					}
 					MainActivity.displayList.remove(pos);
 					Intent intent_delete = new Intent(getApplicationContext(),MainActivity.class);
 					startActivity(intent_delete);
