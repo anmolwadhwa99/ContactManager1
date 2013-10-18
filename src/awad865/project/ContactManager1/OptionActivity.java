@@ -1,7 +1,9 @@
 package awad865.project.ContactManager1;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
@@ -40,9 +42,44 @@ public class OptionActivity extends Activity {
 				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(OptionActivity.this);
 
 				dialogBuilder.setTitle("Sort contact list by?");
-				dialogBuilder.setPositiveButton("Last name", null);
-				dialogBuilder.setNeutralButton("First name", null);
-				dialogBuilder.setNegativeButton("Phone number", null);
+				dialogBuilder.setMessage("Select your sorting order");
+				dialogBuilder.setNegativeButton("Phone number", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						String number = "number";
+						MainActivity.order= number;
+						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
+						startActivity(main_intent);
+
+					}
+				});
+
+				dialogBuilder.setPositiveButton("Last name", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						String last = "lastname";
+						MainActivity.order= last;
+						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
+						startActivity(main_intent);
+
+					}
+				});
+
+				dialogBuilder.setNeutralButton("First name", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						String first = "firstname";
+						MainActivity.order= first;
+						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
+						startActivity(main_intent);
+					}
+				});
+
 
 				//allow the user to cancel the dialog box
 				dialogBuilder.setCancelable(true);

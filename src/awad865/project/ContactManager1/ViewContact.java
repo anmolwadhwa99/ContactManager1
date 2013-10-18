@@ -1,9 +1,12 @@
 package awad865.project.ContactManager1;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -108,7 +111,18 @@ public class ViewContact extends Activity {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
-
+		case R.id.button_call:
+			try {
+				Intent callIntent = new Intent(Intent.ACTION_CALL);
+				callIntent.setData(Uri.parse("tel:"+number.getText().toString()));
+				startActivity(callIntent);
+			} catch (ActivityNotFoundException activityException) {
+				Log.e("Calling a Phone Number", "Call failed", activityException);
+			}
+		case R.id.button_messaging:
+			Intent intent = new Intent(Intent.ACTION_SENDTO, 
+					Uri.fromParts("sms", number.getText().toString(), null));
+			startActivity(intent);
 		default:
 			return super.onOptionsItemSelected(item);
 

@@ -16,7 +16,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-	
+
 	private static String DB_NAME = "ContactDb";
 	private static final int DB_VERSION = 1;
 	private static String DB_PATH = "/data/data/awad865.project.ContactManager1/databases/";
@@ -33,12 +33,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String DATE_TYPE = "datetype";
 	private static final String ADDRESS = "address";
 	private static final String ADDRESS_TYPE = "addresstype";
-	
+
 	public DatabaseHandler(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		this.myContext = context;
 	}
-	
+
 	public void createDataBase() throws IOException{
 		boolean dbExist = checkDataBase();
 		if(dbExist){
@@ -102,7 +102,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			myDataBase.close();
 		super.close();
 	}
-	
+
 	public void addContact(Contact contact) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -119,64 +119,65 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		db.insert(TABLE_CONTACT, null, values);
 		db.close(); // Closing database connection
 	}
-	
+
 	// Deleting single item
-		public void deleteContact(String firstName, String lastName) {
-			SQLiteDatabase db = this.getWritableDatabase();
-			db.delete(TABLE_CONTACT,
-					FIRST_NAME + "=? AND " + LAST_NAME + "=?", 
-					new String[] {firstName, lastName});
-			db.close();
-		}
-		
-		public int updateContact(Contact contact, String firstName, String lastName) {
-			SQLiteDatabase db = this.getWritableDatabase();
-			ContentValues values = new ContentValues();
-			values.put(FIRST_NAME, contact.get_firstName()); 
-			values.put(LAST_NAME, contact.get_lastName());
-			values.put(NUMBER, contact.get_number()); 
-			values.put(NUMBER_TYPE, contact.get_numberType());
-			values.put(EMAIL, contact.get_email()); 
-			values.put(EMAIL_TYPE, contact.get_emailType());
-			values.put(ADDRESS, contact.get_address()); 
-			values.put(ADDRESS_TYPE, contact.get_addressType());
-			values.put(DATE, contact.get_date()); 
-			values.put(DATE_TYPE, contact.get_dateType());
-			// updating row
-			return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
-					new String[] {firstName, lastName});
+	public void deleteContact(String firstName, String lastName) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		db.delete(TABLE_CONTACT,
+				FIRST_NAME + "=? AND " + LAST_NAME + "=?", 
+				new String[] {firstName, lastName});
+		db.close();
+	}
+
+	public int updateContact(Contact contact, String firstName, String lastName) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(FIRST_NAME, contact.get_firstName()); 
+		values.put(LAST_NAME, contact.get_lastName());
+		values.put(NUMBER, contact.get_number()); 
+		values.put(NUMBER_TYPE, contact.get_numberType());
+		values.put(EMAIL, contact.get_email()); 
+		values.put(EMAIL_TYPE, contact.get_emailType());
+		values.put(ADDRESS, contact.get_address()); 
+		values.put(ADDRESS_TYPE, contact.get_addressType());
+		values.put(DATE, contact.get_date()); 
+		values.put(DATE_TYPE, contact.get_dateType());
+		// updating row
+		return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
+				new String[] {firstName, lastName});
+	}
+
+
+	public List<Contact> getContacts(String order) {
+		List<Contact> contactList = new ArrayList<Contact>();
+		// Select All Query
+		String selectQuery = "SELECT * FROM " + TABLE_CONTACT +" ORDER BY " + order;
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9));
+				// Adding contact to list
+				contactList.add(contact);
+			} while (cursor.moveToNext());
 		}
 
-		
-		public List<Contact> getContacts() {
-			List<Contact> contactList = new ArrayList<Contact>();
-			// Select All Query
-			String selectQuery = "SELECT * FROM " + TABLE_CONTACT;
-			SQLiteDatabase db = this.getWritableDatabase();
-			Cursor cursor = db.rawQuery(selectQuery, null);
-
-			// looping through all rows and adding to list
-			if (cursor.moveToFirst()) {
-				do {
-					Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9));
-					// Adding contact to list
-					contactList.add(contact);
-				} while (cursor.moveToNext());
-			}
-
-			return contactList;
-		}
+		return contactList;
+	}
 
 	@Override
 	public void onCreate(SQLiteDatabase arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+	
 
 	@Override
 	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

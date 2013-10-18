@@ -37,16 +37,18 @@ public final class R {
         public static final int addcontact=0x7f020004;
         public static final int addgroup=0x7f020005;
         public static final int blue_colour=0x7f020006;
-        public static final int contactlist=0x7f020007;
-        public static final int content_discard=0x7f020008;
-        public static final int favourites=0x7f020009;
-        public static final int groups=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int ic_navigation_accept=0x7f02000c;
-        public static final int ic_navigation_cancel=0x7f02000d;
-        public static final int ic_social_person=0x7f02000e;
-        public static final int overflow=0x7f02000f;
-        public static final int search=0x7f020010;
+        public static final int call=0x7f020007;
+        public static final int contactlist=0x7f020008;
+        public static final int content_discard=0x7f020009;
+        public static final int favourites=0x7f02000a;
+        public static final int groups=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int ic_navigation_accept=0x7f02000d;
+        public static final int ic_navigation_cancel=0x7f02000e;
+        public static final int ic_social_person=0x7f02000f;
+        public static final int messaging=0x7f020010;
+        public static final int overflow=0x7f020011;
+        public static final int search=0x7f020012;
     }
     public static final class id {
         public static final int action_cancel=0x7f0a002a;
@@ -62,8 +64,10 @@ public final class R {
         public static final int addimage=0x7f0a0003;
         public static final int button_addcontact=0x7f0a0021;
         public static final int button_addgroup=0x7f0a001f;
+        public static final int button_call=0x7f0a0034;
         public static final int button_contactsToDisplay=0x7f0a0024;
         public static final int button_help=0x7f0a0023;
+        public static final int button_messaging=0x7f0a0035;
         public static final int button_options=0x7f0a001d;
         public static final int button_search=0x7f0a001c;
         public static final int button_sort=0x7f0a0022;

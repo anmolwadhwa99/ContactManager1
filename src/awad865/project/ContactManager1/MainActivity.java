@@ -27,6 +27,9 @@ public class MainActivity extends Activity {
 	//initialise private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
+	public static  String order = "firstname";
+	
+	
 
 
 	//create public array list which stores all the contact objects that are to be displayed
@@ -64,7 +67,7 @@ public class MainActivity extends Activity {
 		}*/
 		try {
 			databaseHandler.openDataBase();
-			displayList = databaseHandler.getContacts();
+			displayList = databaseHandler.getContacts(order);
 			databaseHandler.close();
 		} catch(SQLException sqle) {
 			throw sqle;
