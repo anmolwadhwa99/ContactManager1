@@ -151,7 +151,7 @@ public class EditContact extends Activity {
 					//Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), address.getText().toString(), email.getText().toString(),date.getText().toString());
 					//MainActivity.displayList.add(contact);
 					//MainActivity.displayList.remove(pos);
-					
+
 					String retrieveFirstName = firstName.getText().toString();
 					String retrieveLastName = lastName.getText().toString();
 					String retrieveNumber = number.getText().toString();
@@ -163,7 +163,7 @@ public class EditContact extends Activity {
 					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
 					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
 					Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveAddress, retrieveAddressSpinner, retrieveDate, retrieveDateSpinner);
-					
+
 					try {
 						databaseHandler.openDataBase();
 						databaseHandler.updateContact(replaceContact, currentContact.get_firstName(), currentContact.get_lastName());
@@ -174,7 +174,7 @@ public class EditContact extends Activity {
 					Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
 					intent_save.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent_save);
-					
+
 
 				}
 			});

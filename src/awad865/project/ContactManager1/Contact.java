@@ -26,8 +26,8 @@ public class Contact {
 		set_numberType(numberType);
 		set_emailType(emailType);	
 		set_dateType(dateType);
-		
-		
+
+
 	}
 	//have getter and setter methods that set and return the value of all the private fields
 

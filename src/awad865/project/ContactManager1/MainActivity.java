@@ -28,8 +28,8 @@ public class MainActivity extends Activity {
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
 	public static  String order = "firstname";
-	
-	
+
+
 
 
 	//create public array list which stores all the contact objects that are to be displayed

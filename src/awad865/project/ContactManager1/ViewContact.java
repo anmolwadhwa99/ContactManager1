@@ -119,10 +119,12 @@ public class ViewContact extends Activity {
 			} catch (ActivityNotFoundException activityException) {
 				Log.e("Calling a Phone Number", "Call failed", activityException);
 			}
+			return true;
 		case R.id.button_messaging:
 			Intent intent = new Intent(Intent.ACTION_SENDTO, 
 					Uri.fromParts("sms", number.getText().toString(), null));
 			startActivity(intent);
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 
