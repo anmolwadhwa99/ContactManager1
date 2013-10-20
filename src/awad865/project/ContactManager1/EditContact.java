@@ -49,32 +49,23 @@ public class EditContact extends Activity {
 		//Spinner for the email address field
 
 		emailSpinner = (Spinner) findViewById(R.id.contact_email_spinner);
-		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter = ArrayAdapter.createFromResource(this, 
 				R.array.email_array, android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		emailSpinner.setAdapter(adapter);
 
 		//Spinner for address field
 		addressSpinner = (Spinner) findViewById(R.id.contact_address_spinner);
-		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter= ArrayAdapter.createFromResource(this,
 				R.array.address_array, android.R.layout.simple_spinner_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		addressSpinner.setAdapter(adapter);
 
 		//Spinner for the date field
 		dateSpinner = (Spinner) findViewById(R.id.contact_date_spinner);
-		// Create an ArrayAdapter using the string array and a default spinner layout
 		adapter=ArrayAdapter.createFromResource(this, 
 				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
-		// Specify the layout to use when the list of choices appears
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		// Apply the adapter to the spinner
 		dateSpinner.setAdapter(adapter);
 
 		//the private fields are now initialised using findViewById().
@@ -93,32 +84,34 @@ public class EditContact extends Activity {
 		Bundle extras = editContactIntent.getExtras();
 		// the first name and last name is retrieved from ViewContact
 		String theFirstName=extras.getString("firstName");
-		String thelastName=extras.getString("lastName");
+		String theLastName=extras.getString("lastName");
+
+		try {
+			databaseHandler.openDataBase();
+			currentContact = databaseHandler.getContact(theFirstName, theLastName);
+			databaseHandler.close();
+		} catch (SQLException sqle) {
+			throw sqle;
+		}
 
 		//an enhanced for loop is created that runs through displayList and checks to see if the retrieved
 		//first name and last name is the name in displayList. If it is, then it gets all the required information
 		//from the EditText is retrieved.
-		for(Contact contact : MainActivity.displayList){
-			if((contact.get_firstName().equals(theFirstName)) && (contact.get_lastName().equals(thelastName))){
-				currentContact = contact;
-				firstName.setText(contact.get_firstName());
-				lastName.setText(contact.get_lastName());
-				number.setText(contact.get_number());
-				address.setText(contact.get_address());
-				date.setText(contact.get_date());
-				email.setText(contact.get_email());
-				pos = MainActivity.displayList.indexOf(contact);
-				int numPos = ((ArrayAdapter<CharSequence>) numberSpinner.getAdapter()).getPosition(contact.get_numberType());
-				numberSpinner.setSelection(numPos);
-				int emailPos = ((ArrayAdapter<CharSequence>) emailSpinner.getAdapter()).getPosition(contact.get_emailType());
-				emailSpinner.setSelection(emailPos);
-				int addPos = ((ArrayAdapter<CharSequence>) addressSpinner.getAdapter()).getPosition(contact.get_addressType());
-				addressSpinner.setSelection(addPos);
-				int datePos = ((ArrayAdapter<CharSequence>) dateSpinner.getAdapter()).getPosition(contact.get_dateType());
-				dateSpinner.setSelection(datePos);
-			}
 
-		}
+		firstName.setText(currentContact.getFirstName());
+		lastName.setText(currentContact.getLastName());
+		number.setText(currentContact.getNumber());
+		address.setText(currentContact.getAddress());
+		date.setText(currentContact.getDate());
+		email.setText(currentContact.getEmail());
+		int numPos = ((ArrayAdapter<CharSequence>) numberSpinner.getAdapter()).getPosition(currentContact.getNumberType());
+		numberSpinner.setSelection(numPos);
+		int emailPos = ((ArrayAdapter<CharSequence>) emailSpinner.getAdapter()).getPosition(currentContact.getEmailType());
+		emailSpinner.setSelection(emailPos);
+		int addPos = ((ArrayAdapter<CharSequence>) addressSpinner.getAdapter()).getPosition(currentContact.getAddressType());
+		addressSpinner.setSelection(addPos);
+		int datePos = ((ArrayAdapter<CharSequence>) dateSpinner.getAdapter()).getPosition(currentContact.getDateType());
+		dateSpinner.setSelection(datePos);
 	}
 
 	@Override
@@ -162,18 +155,18 @@ public class EditContact extends Activity {
 					String retrieveEmailSpinner = emailSpinner.getSelectedItem().toString();
 					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
 					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
-					Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveAddress, retrieveAddressSpinner, retrieveDate, retrieveDateSpinner);
+					Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveDate, retrieveDateSpinner, retrieveAddress, retrieveAddressSpinner,currentContact.getFavourite());
 
 					try {
 						databaseHandler.openDataBase();
-						databaseHandler.updateContact(replaceContact, currentContact.get_firstName(), currentContact.get_lastName());
+						databaseHandler.updateContact(replaceContact, currentContact.getFirstName(), currentContact.getLastName());
 						databaseHandler.close();
 					} catch (SQLException sqle) {
 						throw sqle;
 					}
-					Intent intent_save = new Intent(getApplicationContext(),MainActivity.class);
-					intent_save.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(intent_save);
+					Intent intentSave = new Intent(getApplicationContext(),MainActivity.class);
+					intentSave.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intentSave);
 
 
 				}
@@ -207,9 +200,9 @@ public class EditContact extends Activity {
 						throw sqle;
 					}
 					MainActivity.displayList.remove(pos);
-					Intent intent_delete = new Intent(getApplicationContext(),MainActivity.class);
-					intent_delete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(intent_delete);
+					Intent intentDelete = new Intent(getApplicationContext(),MainActivity.class);
+					intentDelete.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intentDelete);
 
 				}
 			});
@@ -223,9 +216,9 @@ public class EditContact extends Activity {
 			return super.onOptionsItemSelected(item);
 
 		case R.id.action_edit_cancel:
-			Intent cancel_intent = new Intent(this,MainActivity.class);
-			cancel_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(cancel_intent);
+			Intent intentCancel = new Intent(this,MainActivity.class);
+			intentCancel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intentCancel);
 			return true;
 		}
 	}

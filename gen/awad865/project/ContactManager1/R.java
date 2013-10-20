@@ -40,7 +40,7 @@ public final class R {
         public static final int call=0x7f020007;
         public static final int contactlist=0x7f020008;
         public static final int content_discard=0x7f020009;
-        public static final int favourites=0x7f02000a;
+        public static final int favourite=0x7f02000a;
         public static final int groups=0x7f02000b;
         public static final int ic_launcher=0x7f02000c;
         public static final int ic_navigation_accept=0x7f02000d;
@@ -66,6 +66,7 @@ public final class R {
         public static final int button_addgroup=0x7f0a001f;
         public static final int button_call=0x7f0a0035;
         public static final int button_contactsToDisplay=0x7f0a0025;
+        public static final int button_favourite=0x7f0a0037;
         public static final int button_help=0x7f0a0024;
         public static final int button_messaging=0x7f0a0036;
         public static final int button_options=0x7f0a001d;

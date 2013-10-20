@@ -5,7 +5,7 @@
         android:id="@+id/action_edit_contact"
         android:showAsAction="always"
         android:title="Edit"
-        android:orderInCategory="3"/>
+        android:orderInCategory="4"/>
     <item 
         android:id="@+id/button_call"
         android:showAsAction="always"
@@ -16,4 +16,10 @@
         android:showAsAction="always"
         android:icon="@drawable/messaging"
         android:orderInCategory="2"/>
+	 <item 
+        android:id="@+id/button_favourite"
+        android:showAsAction="always"
+        android:icon="@drawable/favourite"
+        android:orderInCategory="3"/> 
+		
 </menu>

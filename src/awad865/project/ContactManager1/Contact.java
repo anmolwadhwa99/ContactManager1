@@ -4,113 +4,125 @@ package awad865.project.ContactManager1;
 //Contact class that creates contact objects which are stored in the public array list displayList
 public class Contact {
 	//private fields representing the information the contact can have
-	private String _firstName;
-	private String _lastName;
-	private String _number;
-	private String _numberType;
-	private String _email;
-	private String _emailType;
-	private String _address;
-	private String _addressType;
-	private String _date;
-	private String _dateType;
+	private String firstName;
+	private String lastName;
+	private String number;
+	private String numberType;
+	private String email;
+	private String emailType;
+	private String address;
+	private String addressType;
+	private String date;
+	private String dateType;
+	private String favourite;
 	//constructor to initialize the private fields in the contact class 
 
-	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String address, String addressType, String date, String dateType){
-		set_firstName(firstName);
-		set_lastName(lastName);
-		set_number(number);
-		set_email(email);
-		set_address(address);
-		set_date(date);
-		set_numberType(numberType);
-		set_emailType(emailType);	
-		set_dateType(dateType);
+	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite){
+		setFirstName(firstName);
+		setLastName(lastName);
+		setNumber(number);
+		setNumberType(numberType);
+		setEmail(email);
+		setEmailType(emailType);	
+		setDate(date);
+		setDateType(dateType);
+		setAddress(address);
+		setAddressType(addressType);;
+		setFavourite(favourite);
 
 
 	}
 	//have getter and setter methods that set and return the value of all the private fields
 
-	public String get_firstName() {
-		return _firstName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void set_firstName(String _firstName) {
-		this._firstName = _firstName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String get_lastName() {
-		return _lastName;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void set_lastName(String _lastName) {
-		this._lastName = _lastName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String get_number() {
-		return _number;
+	public String getNumber() {
+		return number;
 	}
 
-	public void set_number(String _number) {
-		this._number = _number;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public String get_email() {
-		return _email;
+	public String getNumberType() {
+		return numberType;
 	}
 
-	public void set_email(String _email) {
-		this._email = _email;
+	public void setNumberType(String numberType) {
+		this.numberType = numberType;
 	}
 
-	public String get_address() {
-		return _address;
+	public String getEmailType() {
+		return emailType;
 	}
 
-	public void set_address(String _address) {
-		this._address = _address;
+	public void setEmailType(String emailType) {
+		this.emailType = emailType;
 	}
 
-	public String get_date() {
-		return _date;
+	public String getEmail() {
+		return email;
 	}
 
-	public void set_date(String _date) {
-		this._date = _date;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String get_dateType() {
-		return _dateType;
+	public String getAddress() {
+		return address;
 	}
 
-	public void set_dateType(String _dateType) {
-		this._dateType = _dateType;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public String get_addressType() {
-		return _addressType;
+	public String getAddressType() {
+		return addressType;
 	}
 
-	public void set_addressType(String _addressType) {
-		this._addressType = _addressType;
+	public void setAddressType(String addressType) {
+		this.addressType = addressType;
 	}
 
-	public String get_emailType() {
-		return _emailType;
+	public String getDate() {
+		return date;
 	}
 
-	public void set_emailType(String _emailType) {
-		this._emailType = _emailType;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
-	public String get_numberType() {
-		return _numberType;
+	public String getDateType() {
+		return dateType;
 	}
 
-	public void set_numberType(String _numberType) {
-		this._numberType = _numberType;
+	public void setDateType(String dateType) {
+		this.dateType = dateType;
 	}
 
+	public String getFavourite() {
+		return favourite;
+	}
+
+	public void setFavourite(String favourite) {
+		this.favourite = favourite;
+	}
+
+	
 
 
 

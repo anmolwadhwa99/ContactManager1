@@ -14,10 +14,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
-
-	private static String DB_NAME = "ContactDb";
+	
+	//declaring contants
+	private static String DB_NAME = "ContactsDb";
 	private static final int DB_VERSION = 1;
 	private static String DB_PATH = "/data/data/awad865.project.ContactManager1/databases/";
 	private final Context myContext;
@@ -33,12 +35,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String DATE_TYPE = "datetype";
 	private static final String ADDRESS = "address";
 	private static final String ADDRESS_TYPE = "addresstype";
-
+	private static final String FAVOURITE = "favourite";
+	
+	//the parent constructor is called
 	public DatabaseHandler(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		this.myContext = context;
 	}
-
+	//method for creating the database
 	public void createDataBase() throws IOException{
 		boolean dbExist = checkDataBase();
 		if(dbExist){
@@ -71,11 +75,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	private void copyDataBase() throws IOException{
 
-		//Open your local db as the input stream
+		//Open your local database as the input stream
 		InputStream myInput = myContext.getAssets().open(DB_NAME);
-		// Path to the just created empty db
+		// Path to the just created empty database
 		String outFileName = DB_PATH + DB_NAME;
-		//Open the empty db as the output stream
+		//Open the empty database as the output stream
 		OutputStream myOutput = new FileOutputStream(outFileName);
 		//transfer bytes from the inputfile to the outputfile
 		byte[] buffer = new byte[1024];
@@ -102,25 +106,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			myDataBase.close();
 		super.close();
 	}
-
+	//method for adding a contact to the database
 	public void addContact(Contact contact) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(FIRST_NAME, contact.get_firstName()); 
-		values.put(LAST_NAME, contact.get_lastName()); 
-		values.put(NUMBER, contact.get_number()); 
-		values.put(NUMBER_TYPE, contact.get_numberType());
-		values.put(EMAIL, contact.get_email()); 
-		values.put(EMAIL_TYPE, contact.get_emailType());
-		values.put(ADDRESS, contact.get_address()); 
-		values.put(ADDRESS_TYPE, contact.get_addressType());
-		values.put(DATE, contact.get_date()); 
-		values.put(DATE_TYPE, contact.get_dateType());
+		//put all the appropriate edit text fields contact and store them in the database.
+		values.put(FIRST_NAME, contact.getFirstName()); 
+		values.put(LAST_NAME, contact.getLastName()); 
+		values.put(NUMBER, contact.getNumber()); 
+		values.put(NUMBER_TYPE, contact.getNumberType());
+		values.put(EMAIL, contact.getEmail()); 
+		values.put(EMAIL_TYPE, contact.getEmailType());
+		values.put(ADDRESS, contact.getAddress()); 
+		values.put(ADDRESS_TYPE, contact.getAddressType());
+		values.put(DATE, contact.getDate()); 
+		values.put(DATE_TYPE, contact.getDateType());
+		values.put(FAVOURITE, "false");
 		db.insert(TABLE_CONTACT, null, values);
 		db.close(); // Closing database connection
 	}
 
-	// Deleting single item
+	// Deleting single contact
 	public void deleteContact(String firstName, String lastName) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(TABLE_CONTACT,
@@ -128,29 +134,76 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				new String[] {firstName, lastName});
 		db.close();
 	}
-
+	
+	//this method is used for editing a contact
 	public int updateContact(Contact contact, String firstName, String lastName) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(FIRST_NAME, contact.get_firstName()); 
-		values.put(LAST_NAME, contact.get_lastName());
-		values.put(NUMBER, contact.get_number()); 
-		values.put(NUMBER_TYPE, contact.get_numberType());
-		values.put(EMAIL, contact.get_email()); 
-		values.put(EMAIL_TYPE, contact.get_emailType());
-		values.put(ADDRESS, contact.get_address()); 
-		values.put(ADDRESS_TYPE, contact.get_addressType());
-		values.put(DATE, contact.get_date()); 
-		values.put(DATE_TYPE, contact.get_dateType());
+		//we first find the existing contact, and overwrite the old
+		//values with the new values
+		values.put(FIRST_NAME, contact.getFirstName()); 
+		values.put(LAST_NAME, contact.getLastName());
+		values.put(NUMBER, contact.getNumber()); 
+		values.put(NUMBER_TYPE, contact.getNumberType());
+		values.put(EMAIL, contact.getEmail()); 
+		values.put(EMAIL_TYPE, contact.getEmailType());
+		values.put(ADDRESS, contact.getAddress()); 
+		values.put(ADDRESS_TYPE, contact.getAddressType());
+		values.put(DATE, contact.getDate()); 
+		values.put(DATE_TYPE, contact.getDateType());
+		values.put(FAVOURITE, contact.getFavourite());
 		// updating row
 		return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
 				new String[] {firstName, lastName});
 	}
 
+	public List<Contact> getFavouriteContacts() {
+		List<Contact> contactList = new ArrayList<Contact>();
+		String isFavourite = "true";
+		// Select All Query
+		String selectQuery = "SELECT * FROM " + TABLE_CONTACT + " WHERE " + FAVOURITE + "='" + isFavourite + "'";
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
+				// Adding contact to list
+				contactList.add(contact);
+			} while (cursor.moveToNext());
+		}
+
+		return contactList;
+	}
+	
+	
+	public Contact getContact(String firstName, String lastName) {
+		List<Contact> contactList = new ArrayList<Contact>();
+		// Select All Query
+		String selectQuery = "SELECT * FROM " + TABLE_CONTACT + " WHERE " + FIRST_NAME + "='" + firstName + "' AND " + LAST_NAME + "='" + lastName + "'";
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
+
+		// looping through all rows and adding to list
+		if (cursor.moveToFirst()) {
+			do {
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
+				// Adding contact to list
+				contactList.add(contact);
+			} while (cursor.moveToNext());
+		}
+
+		return contactList.get(0);
+	}
+	
+	
+	
 
 	public List<Contact> getContacts(String order) {
 		List<Contact> contactList = new ArrayList<Contact>();
 		// Select All Query
+		//this bottom line is used to change the sorting order of the contact list
 		String selectQuery = "SELECT * FROM " + TABLE_CONTACT +" ORDER BY " + order;
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
@@ -158,12 +211,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
 		}
-
 		return contactList;
 	}
 

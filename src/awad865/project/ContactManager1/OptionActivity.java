@@ -49,8 +49,9 @@ public class OptionActivity extends Activity {
 					public void onClick(DialogInterface arg0, int arg1) {
 						String number = "number";
 						MainActivity.order= number;
-						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
-						startActivity(main_intent);
+						Intent intentMain= new Intent(OptionActivity.this, MainActivity.class);
+						intentMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intentMain);
 
 					}
 				});
@@ -62,8 +63,9 @@ public class OptionActivity extends Activity {
 						// TODO Auto-generated method stub
 						String last = "lastname";
 						MainActivity.order= last;
-						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
-						startActivity(main_intent);
+						Intent intentMain= new Intent(OptionActivity.this, MainActivity.class);
+						intentMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intentMain);
 
 					}
 				});
@@ -75,8 +77,9 @@ public class OptionActivity extends Activity {
 						// TODO Auto-generated method stub
 						String first = "firstname";
 						MainActivity.order= first;
-						Intent main_intent= new Intent(OptionActivity.this, MainActivity.class);
-						startActivity(main_intent);
+						Intent intentMain= new Intent(OptionActivity.this, MainActivity.class);
+						intentMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intentMain);
 					}
 				});
 
