@@ -30,7 +30,7 @@ public class ViewContact extends Activity {
 	private String currentFavourite = "";
 	private String theFirstName = "";
 	private String theLastName = "";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,18 +72,18 @@ public class ViewContact extends Activity {
 		} catch (SQLException sqle) {
 			throw sqle;
 		}
-		
+
 		//have an enhanced for loop that checks to see if the retrieved information, matches the information
 		//in displayList (public array list in MainActivity.java). If it is then retrieve all that information
 		//about that specific contact and display to the user.
-		
-		
-				firstName.setText(currentContact.getFirstName());
-				lastName.setText(currentContact.getLastName());
-				number.setText(currentContact.getNumber());
-				address.setText(currentContact.getAddress());
-				date.setText(currentContact.getDate());
-				email.setText(currentContact.getEmail());
+
+
+		firstName.setText(currentContact.getFirstName());
+		lastName.setText(currentContact.getLastName());
+		number.setText(currentContact.getNumber());
+		address.setText(currentContact.getAddress());
+		date.setText(currentContact.getDate());
+		email.setText(currentContact.getEmail());
 
 	}
 
@@ -115,8 +115,8 @@ public class ViewContact extends Activity {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
-		//if the user presses the call button in the view contact activity, then 
-		//they are directed to the dialer and the number they saved is dialed
+			//if the user presses the call button in the view contact activity, then 
+			//they are directed to the dialer and the number they saved is dialed
 		case R.id.button_call:
 			try {
 				Intent intentCall = new Intent(Intent.ACTION_CALL);
@@ -127,16 +127,16 @@ public class ViewContact extends Activity {
 				Log.e("Calling a Phone Number", "Call failed", activityException);
 			}
 			return true;
-		//if the messaging button is pressed, then the user 
-		//is navigated to the messaging application and they can
-		//compose a message to the number saved.
+			//if the messaging button is pressed, then the user 
+			//is navigated to the messaging application and they can
+			//compose a message to the number saved.
 		case R.id.button_messaging:
 			Intent intentMessage = new Intent(Intent.ACTION_SENDTO, 
 					Uri.fromParts("sms", number.getText().toString(), null));
 			intentMessage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentMessage);
 			return true;
-			
+
 		case R.id.button_favourite:
 			if(currentContact.getFavourite().equals("false")) {
 				currentContact.setFavourite("true");
@@ -152,6 +152,39 @@ public class ViewContact extends Activity {
 			} catch (SQLException sqle) {
 				throw sqle;
 			}
+			return true;
+
+		case R.id.button_email:
+			try{
+				//the intent to send
+				Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+				//setting the type to be plain text
+				emailIntent.setType("message/rfc822");
+
+				//Variables to contain receiver, and preset subject and message
+				String receiver = email.getText().toString();
+				String subject= "Subject";
+				String body = "Message here";
+
+				//Setting the receiver
+				emailIntent.setData(Uri.parse("mailto:"+ receiver));
+				//Putting in the preset-subject line into the intent
+				emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+				//Putting the preset-message into the intent
+				emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+				//Bringing up email composer or email chooser
+
+				emailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+				startActivity(emailIntent);
+
+
+			}catch(ActivityNotFoundException ex){
+				//Logging failure into log-cat
+				Log.e("Creating email","Emailing failed",ex);
+
+			}
+
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

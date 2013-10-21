@@ -17,15 +17,15 @@ public class CustomListAdapter extends ArrayAdapter<Contact>{
 	public CustomListAdapter(Context context, List<Contact> contacts){
 		super(context,android.R.layout.simple_list_item_1,contacts);
 
-		context = context;
-		contacts = contacts;
+		this.context = context;
+		this.contacts = contacts;
 
 	}
 
 
 	public View getView(int position, View convertView,ViewGroup parent){
 		//Create a layout inflater to inflate our xml layout for each item in the list
-		LayoutInflater inflater = (LayoutInflater) _context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		//Inflate the list item layout. Keep a reference to the inflated view.
 		//No root view specified
