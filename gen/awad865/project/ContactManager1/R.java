@@ -18,6 +18,8 @@ public final class R {
     }
     public static final class color {
         public static final int actionbar_text=0x7f080000;
+        public static final int text_colour=0x7f080001;
+        public static final int view_colour=0x7f080002;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

@@ -16,5 +16,8 @@
     </style>
 
     <color name="actionbar_text">#ffffff</color>
+    
+    <color name="text_colour">#0ab2ea</color>
+    <color name="view_colour">#0ab2ea</color>
 
 </resources>
