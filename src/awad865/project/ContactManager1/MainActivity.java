@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void setUpListView(){
-	
+
 		try {
 			databaseHandler.openDataBase();
 			displayList = databaseHandler.getContacts(order);
@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
 		listView.setOnItemClickListener(new listItemClickedListener());
 
 	}
-	
+
 
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){

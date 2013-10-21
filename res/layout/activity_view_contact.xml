@@ -34,7 +34,7 @@
             android:layout_weight="5" />
 
         <ImageButton
-            android:id="@+id/addimage"
+            android:id="@+id/addImage"
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_weight="1"

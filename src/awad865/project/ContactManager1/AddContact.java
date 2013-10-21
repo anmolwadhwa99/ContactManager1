@@ -2,15 +2,25 @@ package awad865.project.ContactManager1;
 
 
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 
@@ -27,6 +37,8 @@ public class AddContact extends Activity {
 	private Spinner addressSpinner;
 	private Spinner dateSpinner;
 	private DatabaseHandler databaseHandler;
+	private ImageButton addPic;
+	private final int IMAGE_SELECTION =1;
 
 
 
@@ -47,7 +59,7 @@ public class AddContact extends Activity {
 		date = (EditText)findViewById(R.id.edit_date);
 		email =(EditText)findViewById(R.id.edit_email);
 
-		
+
 		//Spinner for the phone number field
 		numberSpinner = (Spinner) findViewById(R.id.contact_number_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner layout
@@ -65,22 +77,58 @@ public class AddContact extends Activity {
 				R.array.email_array, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		emailSpinner.setAdapter(adapter);
-		
+
 		//Spinner for address field
 		addressSpinner = (Spinner) findViewById(R.id.contact_address_spinner);
 		adapter= ArrayAdapter.createFromResource(this,
 				R.array.address_array, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		addressSpinner.setAdapter(adapter);
-		
+
 		//Spinner for date
 		dateSpinner = (Spinner) findViewById(R.id.contact_date_spinner);
 		adapter=ArrayAdapter.createFromResource(this, 
 				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		dateSpinner.setAdapter(adapter);
+		
+		
+		addPic = (ImageButton) findViewById(R.id.addImage);
+		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.ic_social_person);
+		addPic.setImageBitmap(bm);
+		
+		addPic.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent imageIntent = new Intent(Intent.ACTION_PICK);
+				imageIntent.setType("image/*");
+				startActivityForResult(imageIntent, IMAGE_SELECTION);
+				
+			}
+		});
 	}
 
+	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
+		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+		
+		switch(requestCode){
+		case IMAGE_SELECTION:
+			if(resultCode == RESULT_OK){
+				try{
+					BitmapFactory.Options options = new BitmapFactory.Options();
+					options.inScaled = true;
+					final Uri imageURI = imageReturnedIntent.getData();
+					final InputStream inStr = getContentResolver().openInputStream(imageURI);
+					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
+					addPic.setImageBitmap(selectImg);
+				}catch(FileNotFoundException ex){
+					Log.e("File not found", "Selected image was not found", ex);
+				}
+			}
+    		}
+		
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,8 +143,11 @@ public class AddContact extends Activity {
 		//and stored in the private fields and then a new contact object is created and added to the 
 		//database
 		case R.id.action_save:
+			BitmapDrawable bmd = ((BitmapDrawable) addPic.getDrawable());
+			Bitmap photo = bmd.getBitmap();
 			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false");
 			//add to database
+			
 			try {
 				databaseHandler.openDataBase();
 				databaseHandler.addContact(contact);
@@ -116,7 +167,7 @@ public class AddContact extends Activity {
 			intentCancel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentCancel);
 			return true;
-		//if the up button is pressed, then the user is taken back to the MainActivity
+			//if the up button is pressed, then the user is taken back to the MainActivity
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;

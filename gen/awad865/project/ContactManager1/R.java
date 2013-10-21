@@ -64,7 +64,7 @@ public final class R {
         public static final int action_list_of_contacts=0x7f0a0032;
         public static final int action_save=0x7f0a002a;
         public static final int action_settings=0x7f0a0029;
-        public static final int addimage=0x7f0a0003;
+        public static final int addImage=0x7f0a0003;
         public static final int button_addcontact=0x7f0a0021;
         public static final int button_addgroup=0x7f0a001f;
         public static final int button_call=0x7f0a0035;
