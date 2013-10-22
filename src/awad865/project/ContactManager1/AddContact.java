@@ -2,7 +2,9 @@ package awad865.project.ContactManager1;
 
 
 
+import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 import android.app.Activity;
@@ -116,12 +118,30 @@ public class AddContact extends Activity {
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
 				try{
-					BitmapFactory.Options options = new BitmapFactory.Options();
-					options.inScaled = true;
 					final Uri imageURI = imageReturnedIntent.getData();
-					final InputStream inStr = getContentResolver().openInputStream(imageURI);
-					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
-					addPic.setImageBitmap(selectImg);
+                    final InputStream inStr = new BufferedInputStream(getContentResolver().openInputStream(imageURI));
+
+                    int height = addPic.getHeight();
+                    int width = addPic.getWidth();
+
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeStream(inStr, null, options);
+
+                    // Calculate inSampleSize
+                    options.inSampleSize = calculateInSampleSize(options, width, height);
+
+                    // Decode bitmap with inSampleSize set
+                    options.inJustDecodeBounds = false;
+
+                    try {
+                        inStr.reset();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
+                    addPic.setImageBitmap(selectImg);
 				}catch(FileNotFoundException ex){
 					Log.e("File not found", "Selected image was not found", ex);
 				}
@@ -129,6 +149,28 @@ public class AddContact extends Activity {
     		}
 		
 	}
+	
+	public int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            // Calculate ratios of height and width to requested height and width
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+
+            // Choose the smallest ratio as inSampleSize value, this will guarantee
+            // a final image with both dimensions larger than or equal to the
+            // requested height and width.
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+        }
+
+        return inSampleSize;
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
