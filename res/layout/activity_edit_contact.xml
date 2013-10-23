@@ -12,13 +12,13 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:text="@string/heading_name"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_name"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -65,13 +65,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="@string/heading_number"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_number"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -103,13 +103,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="@string/heading_email"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_email"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -141,13 +141,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="@string/heading_address"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_address"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <LinearLayout
         android:layout_width="337dp"
@@ -179,13 +179,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="@string/heading_event"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_event"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <LinearLayout
         android:layout_width="337dp"

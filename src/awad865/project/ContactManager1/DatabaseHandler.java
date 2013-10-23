@@ -4,8 +4,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.http.util.ByteArrayBuffer;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,6 +17,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -35,7 +39,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String DATE_TYPE = "datetype";
 	private static final String ADDRESS = "address";
 	private static final String ADDRESS_TYPE = "addresstype";
+	private static final String IMAGE = "image";
 	private static final String FAVOURITE = "favourite";
+	
 	
 	//the parent constructor is called
 	public DatabaseHandler(Context context) {
@@ -121,6 +127,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(ADDRESS_TYPE, contact.getAddressType());
 		values.put(DATE, contact.getDate()); 
 		values.put(DATE_TYPE, contact.getDateType());
+		values.put(IMAGE, contact.getImage());
 		values.put(FAVOURITE, "false");
 		db.insert(TABLE_CONTACT, null, values);
 		db.close(); // Closing database connection
@@ -151,7 +158,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(ADDRESS_TYPE, contact.getAddressType());
 		values.put(DATE, contact.getDate()); 
 		values.put(DATE_TYPE, contact.getDateType());
+		values.put(IMAGE, contact.getImage());
 		values.put(FAVOURITE, contact.getFavourite());
+		
 		// updating row
 		return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
 				new String[] {firstName, lastName});
@@ -168,7 +177,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
@@ -188,7 +197,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
@@ -211,7 +220,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());

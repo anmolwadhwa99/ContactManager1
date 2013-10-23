@@ -1,5 +1,11 @@
 package awad865.project.ContactManager1;
 
+import java.sql.Blob;
+
+import org.apache.http.util.ByteArrayBuffer;
+
+
+
 
 //Contact class that creates contact objects which are stored in the public array list displayList
 public class Contact {
@@ -15,9 +21,10 @@ public class Contact {
 	private String date;
 	private String dateType;
 	private String favourite;
+	private byte[] image;
 	//constructor to initialize the private fields in the contact class 
 
-	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite){
+	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite,byte[] byteArray){
 		setFirstName(firstName);
 		setLastName(lastName);
 		setNumber(number);
@@ -27,8 +34,9 @@ public class Contact {
 		setDate(date);
 		setDateType(dateType);
 		setAddress(address);
-		setAddressType(addressType);;
+		setAddressType(addressType);
 		setFavourite(favourite);
+		setImage(byteArray);
 
 
 	}
@@ -122,7 +130,15 @@ public class Contact {
 		this.favourite = favourite;
 	}
 
-	
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+
 
 
 

@@ -77,13 +77,6 @@ public class MainActivity extends Activity {
 
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
-		//if the group button is clicked on the action bar, then navigate 
-		//to the group activity
-		case R.id.action_groups:
-			Intent intentGroup = new Intent(this,Groups.class);
-			intentGroup.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intentGroup);
-			return true;
 			//if the favourites button is clicked on the action bar, then navigate
 			//to the favourites activity
 		case R.id.action_favourites:

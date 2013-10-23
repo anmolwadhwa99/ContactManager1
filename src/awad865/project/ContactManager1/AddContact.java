@@ -2,13 +2,17 @@ package awad865.project.ContactManager1;
 
 
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.database.SQLException;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -22,9 +26,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-
+/**
+ * The purpose of this class is for the user to add a new contact in the contact manager and this is stored
+ * in the database.
+ * @author Anmol Wadhwa, awad865, 5603097
+ */
 
 public class AddContact extends Activity {
+
 	//declare private fields
 	private EditText firstName;
 	private EditText lastName;
@@ -49,9 +58,10 @@ public class AddContact extends Activity {
 		//code that enables the title on the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		//initialising the databaseHandler object
 		databaseHandler = new DatabaseHandler(this);
 
-		//intialise private fields
+		//initialise private fields
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
 		number = (EditText)findViewById(R.id.edit_number);
@@ -92,15 +102,17 @@ public class AddContact extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		dateSpinner.setAdapter(adapter);
 
-
+		//initialize the ImageButton
 		addPic = (ImageButton) findViewById(R.id.addImage);
-		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.ic_social_person);
+		//set default image
+		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.contacts_photo);
 		addPic.setImageBitmap(bm);
 
 		addPic.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+				//if the user clicks on the image view then take him to the Gallery
 				Intent imageIntent = new Intent(Intent.ACTION_PICK);
 				imageIntent.setType("image/*");
 				startActivityForResult(imageIntent, IMAGE_SELECTION);
@@ -110,17 +122,22 @@ public class AddContact extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
+		//call parent constructor
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
+		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
 				try{
+					//we try to get the image and scale it down
 					BitmapFactory.Options options = new BitmapFactory.Options();
 					options.inScaled = true;
+					//initialise the imageURI, InputStream and Bitmap
 					final Uri imageURI = imageReturnedIntent.getData();
 					final InputStream inStr = getContentResolver().openInputStream(imageURI);
 					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
+					//we set that image
 					addPic.setImageBitmap(selectImg);
 				}catch(FileNotFoundException ex){
 					Log.e("File not found", "Selected image was not found", ex);
@@ -129,6 +146,10 @@ public class AddContact extends Activity {
 		}
 
 	}
+
+
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -140,12 +161,16 @@ public class AddContact extends Activity {
 
 		switch(item.getItemId()){
 		//if the save button is pressed, then all the information is retrieved from the EditText fields
-		//and stored in the private fields and then a new contact object is created and added to the 
-		//database
+		//and ImageButton and then a new contact object is created and added to the 
+		//database. 
 		case R.id.action_save:
+			//get the bitmap and convert it to a byte array
 			BitmapDrawable bmd = ((BitmapDrawable) addPic.getDrawable());
 			Bitmap photo = bmd.getBitmap();
-			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false");
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			byte[] byteArray = stream.toByteArray();
+			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false",byteArray);
 			//add to database
 
 			try {
@@ -177,4 +202,7 @@ public class AddContact extends Activity {
 
 		}
 	}
+
+
+
 }

@@ -4,11 +4,7 @@
 
     <!-- Settings, should always be in the overflow -->
    
-    <item
-        android:id="@+id/action_groups"
-        android:showAsAction="always"
-        android:title="@string/action_groups"
-        android:layout_weight="1" />
+
     <item
         android:id="@+id/action_list_of_contacts"
         android:showAsAction="always"

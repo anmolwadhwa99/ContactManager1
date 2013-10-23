@@ -28,6 +28,7 @@
         </activity>
         <activity
             android:name="awad865.project.ContactManager1.AddContact"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Add Contact"
             android:parentActivityName="awad865.project.ContactManager1.MainActivity" >
         </activity>

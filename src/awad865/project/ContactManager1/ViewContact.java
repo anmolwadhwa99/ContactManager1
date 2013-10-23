@@ -31,6 +31,7 @@ public class ViewContact extends Activity {
 	private String theFirstName = "";
 	private String theLastName = "";
 
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

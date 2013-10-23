@@ -1,174 +1,179 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/lbl_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/heading_name"
-        android:textColor="@color/text_colour" />
-
-    <View
-        android:id="@+id/view_name"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:background="@color/view_colour" />
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/edit_first_name"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/lbl_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:layout_weight="5" />
+            android:text="@string/heading_name"
+            android:textColor="@color/text_colour" />
 
-        <ImageButton
-            android:id="@+id/addImage"
-            android:layout_width="0dp"
-            android:layout_height="58dp"
-            android:layout_weight="1"
-            android:background="@drawable/ic_social_person" />
-    </LinearLayout>
+        <View
+            android:id="@+id/view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/text_colour" />
 
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <EditText
-            android:id="@+id/edit_last_name"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="337dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="5" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="6" >
 
-    <TextView
-        android:id="@+id/lbl_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="@string/heading_number"
-        android:textColor="@color/text_colour" />
+            <EditText
+                android:id="@+id/edit_first_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="5" />
 
-    <View
-        android:id="@+id/view_number"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:background="@color/view_colour" />
+            <ImageButton
+                android:id="@+id/addImage"
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="@drawable/ic_social_person" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <EditText
-            android:id="@+id/edit_number"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="337dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="5" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="6" >
 
-    <TextView
-        android:id="@+id/lbl_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="@string/heading_email"
-        android:textColor="@color/text_colour" />
+            <EditText
+                android:id="@+id/edit_last_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="5" />
+        </LinearLayout>
 
-    <View
-        android:id="@+id/view_email"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:background="@color/view_colour" />
-
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <EditText
-            android:id="@+id/edit_email"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/lbl_number"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="5" />
-    </LinearLayout>
+            android:layout_marginLeft="5dp"
+            android:text="@string/heading_number"
+            android:textColor="@color/text_colour" />
 
-    <TextView
-        android:id="@+id/lbl_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="@string/heading_address"
-        android:textColor="@color/text_colour" />
+        <View
+            android:id="@+id/view_number"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/text_colour" />
 
-    <View
-        android:id="@+id/view_address"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:background="@color/view_colour" />
-
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <EditText
-            android:id="@+id/edit_address"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="337dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="5" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:weightSum="6" >
 
-    <TextView
-        android:id="@+id/lbl_event"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="@string/heading_event"
-        android:textColor="@color/text_colour" />
+            <EditText
+                android:id="@+id/edit_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="5" />
+        </LinearLayout>
 
-    <View
-        android:id="@+id/view_event"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:background="@color/view_colour" />
-
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-
-        <EditText
-            android:id="@+id/edit_date"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/lbl_email"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="5" />
+            android:layout_marginLeft="5dp"
+            android:text="@string/heading_email"
+            android:textColor="@color/text_colour" />
+
+        <View
+            android:id="@+id/view_email"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/text_colour" />
+
+        <LinearLayout
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6" >
+
+            <EditText
+                android:id="@+id/edit_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="5" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lbl_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/heading_address"
+            android:textColor="@color/text_colour" />
+
+        <View
+            android:id="@+id/view_address"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/text_colour" />
+
+        <LinearLayout
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6" >
+
+            <EditText
+                android:id="@+id/edit_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="5" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lbl_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/heading_event"
+            android:textColor="@color/text_colour" />
+
+        <View
+            android:id="@+id/view_event"
+            android:layout_width="wrap_content"
+            android:layout_height="1.5dp"
+            android:background="@color/text_colour" />
+
+        <LinearLayout
+            android:layout_width="337dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="6" >
+
+            <EditText
+                android:id="@+id/edit_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="5" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

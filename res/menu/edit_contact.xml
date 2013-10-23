@@ -2,12 +2,12 @@
 
     <item
         android:id="@+id/action_edit_save"
-        android:icon="@drawable/ic_navigation_accept"
+        android:icon="@drawable/accept"
         android:orderInCategory="1"
         android:showAsAction="always"/>
     <item
         android:id="@+id/action_edit_cancel"
-        android:icon="@drawable/ic_navigation_cancel"
+        android:icon="@drawable/cancel"
         android:orderInCategory="2"
         android:showAsAction="always"/>
     <item

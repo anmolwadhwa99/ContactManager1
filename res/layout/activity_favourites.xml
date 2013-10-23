@@ -15,13 +15,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:text="@string/action_favourites"
-        android:textColor="#0ab2ea" />
+        android:textColor="@color/text_colour" />
 
     <View
         android:id="@+id/view_heading_main_activity"
         android:layout_width="wrap_content"
         android:layout_height="1.5dp"
-        android:background="@drawable/blue_colour" />
+        android:background="@color/text_colour" />
 
     <ListView
         android:id="@+id/main_favourite_listview"

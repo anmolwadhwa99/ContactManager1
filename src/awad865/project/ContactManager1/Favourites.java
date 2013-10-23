@@ -80,11 +80,7 @@ public class Favourites extends Activity {
 			return true;
 			//if the "Groups" button is pressed on the action bar, then navigate the user
 			//to Groups activity.
-		case R.id.action_groups:
-			Intent groupIntent = new Intent(this,Groups.class);
-			groupIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(groupIntent);
-			return true;
+		
 		default:
 			return super.onOptionsItemSelected(item);
 
