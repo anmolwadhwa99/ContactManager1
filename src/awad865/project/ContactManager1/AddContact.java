@@ -2,9 +2,7 @@ package awad865.project.ContactManager1;
 
 
 
-import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
 import android.app.Activity;
@@ -93,84 +91,44 @@ public class AddContact extends Activity {
 				R.array.date_array, android.R.layout.simple_spinner_dropdown_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		dateSpinner.setAdapter(adapter);
-		
-		
+
+
 		addPic = (ImageButton) findViewById(R.id.addImage);
 		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.ic_social_person);
 		addPic.setImageBitmap(bm);
-		
+
 		addPic.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				Intent imageIntent = new Intent(Intent.ACTION_PICK);
 				imageIntent.setType("image/*");
 				startActivityForResult(imageIntent, IMAGE_SELECTION);
-				
+
 			}
 		});
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-		
+
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
 				try{
+					BitmapFactory.Options options = new BitmapFactory.Options();
+					options.inScaled = true;
 					final Uri imageURI = imageReturnedIntent.getData();
-                    final InputStream inStr = new BufferedInputStream(getContentResolver().openInputStream(imageURI));
-
-                    int height = addPic.getHeight();
-                    int width = addPic.getWidth();
-
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inJustDecodeBounds = true;
-                    BitmapFactory.decodeStream(inStr, null, options);
-
-                    // Calculate inSampleSize
-                    options.inSampleSize = calculateInSampleSize(options, width, height);
-
-                    // Decode bitmap with inSampleSize set
-                    options.inJustDecodeBounds = false;
-
-                    try {
-                        inStr.reset();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
-                    addPic.setImageBitmap(selectImg);
+					final InputStream inStr = getContentResolver().openInputStream(imageURI);
+					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
+					addPic.setImageBitmap(selectImg);
 				}catch(FileNotFoundException ex){
 					Log.e("File not found", "Selected image was not found", ex);
 				}
 			}
-    		}
-		
+		}
+
 	}
-	
-	public int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            // Calculate ratios of height and width to requested height and width
-            final int heightRatio = Math.round((float) height / (float) reqHeight);
-            final int widthRatio = Math.round((float) width / (float) reqWidth);
-
-            // Choose the smallest ratio as inSampleSize value, this will guarantee
-            // a final image with both dimensions larger than or equal to the
-            // requested height and width.
-            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
-        }
-
-        return inSampleSize;
-    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -189,7 +147,7 @@ public class AddContact extends Activity {
 			Bitmap photo = bmd.getBitmap();
 			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false");
 			//add to database
-			
+
 			try {
 				databaseHandler.openDataBase();
 				databaseHandler.addContact(contact);

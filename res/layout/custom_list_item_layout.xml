@@ -15,15 +15,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/list_item_lastname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp" />
+            android:fontFamily="sans-serif-light"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,9 +38,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:textSize="15sp"
-            android:layout_marginLeft="10dp" />
+            android:textStyle="italic" />
     </LinearLayout>
 
 </LinearLayout>
