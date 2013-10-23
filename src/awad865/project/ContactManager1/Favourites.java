@@ -18,12 +18,15 @@ import android.widget.ListView;
 import awad865.project.ContactManager1.MainActivity.listItemClickedListener;
 
 /**
- * 
- * @author Anmol Wadhwa
- *
+ * The purpose of this activity is for users to view a contact and mark that contact
+ * as a favourite. By doing that, the contact appears in this activity. By having this functionality, 
+ * the user doesn't have to search for contacts in the list and can go to 
+ * this activity to look for them. This make it convenient for the user to 
+ * view contacts that are regularly contacted.
+ * @author Anmol Wadhwa (awad865, 5603097)
  */
 public class Favourites extends Activity {
-
+	//declare private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
 	private List <Contact> displayList = new ArrayList<Contact>();
@@ -45,6 +48,7 @@ public class Favourites extends Activity {
 	private void setUpListView(){
 
 		try {
+			//we open up the database and look for the contacts that are marked as favourite.
 			databaseHandler.openDataBase();
 			displayList = databaseHandler.getFavouriteContacts();
 			databaseHandler.close();
@@ -76,8 +80,8 @@ public class Favourites extends Activity {
 			contactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(contactIntent);
 			return true;
-	
-		
+
+
 		default:
 			return super.onOptionsItemSelected(item);
 
@@ -93,19 +97,19 @@ public class Favourites extends Activity {
 		startActivity(option_intent);
 
 	}
-
+	//if the user clicks on an item in the ListView, then the first name 
+	//and last name are stored in variables and passed as a bundle 
+	//to the ViewContact activity and the ViewContact activity is opened.
 	class listItemClickedListener implements AdapterView.OnItemClickListener{
 
 
 		@Override
 		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
-			//we get the first name and last name of the contact in the displayList
 			String fname=displayList.get(clickedViewPosition).getFirstName();
 			String lname=displayList.get(clickedViewPosition).getLastName();
 
 			// TODO Auto-generated method stub
-			//Using the bundle, we pass this information on to a new activity called ViewContact
-			//this is used for the view contact use case.
+
 			Intent viewContactIntent= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();
 

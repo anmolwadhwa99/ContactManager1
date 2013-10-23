@@ -21,16 +21,25 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
+/**
+ * This is the activity that opens by default when the application is run.
+ * The purpose of this activity is to show the list of contacts the user 
+ * has stored. The user can add a new contact, change the sorting order 
+ * of the list by clicking on the addContact and moreOptions button in this 
+ * activity.
+ * 
+ * @author Anmol Wadhwa (awad865, 5603097)
+ *
+ */
 public class MainActivity extends Activity {
 
-	//initialise private fields
+	//declare private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
+	
+	//this variable is used to manage the sorting order of the list. By default,
+	//the contacts are sorted by first name.
 	public static  String order = "firstname";
-
-
-
 
 	//create public array list which stores all the contact objects that are to be displayed
 	public static List <Contact> displayList = new ArrayList<Contact>();
@@ -38,14 +47,15 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//remove the title and the android icon from the actionbar
+		//remove the title and the android icon from the action bar
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 
-
-		//link the image buttons to the .java file by using the findViewById() method
+		
 		listView = (ListView)findViewById(R.id.main_contact_listview);
 		databaseHandler = new DatabaseHandler(this);
+		
+		//when we first open the application, the database is created
 		try {
 			databaseHandler.createDataBase();
 		} catch (IOException ioe) {
@@ -59,6 +69,9 @@ public class MainActivity extends Activity {
 	private void setUpListView(){
 
 		try {
+			//when the list view is opened, the database is opened
+			//and the contacts are retrieved from the database and
+			//are sorted by first name (by default).
 			databaseHandler.openDataBase();
 			displayList = databaseHandler.getContacts(order);
 			databaseHandler.close();
@@ -121,7 +134,7 @@ public class MainActivity extends Activity {
 
 
 	//method that implements AdapterView.OnItemClickListener, so if the user clicks on a contact inside
-	//list view then this method is invoked
+	//list view then the method inside this class is invoked.
 	class listItemClickedListener implements AdapterView.OnItemClickListener{
 
 
@@ -133,10 +146,11 @@ public class MainActivity extends Activity {
 
 			// TODO Auto-generated method stub
 			//Using the bundle, we pass this information on to a new activity called ViewContact
-			//this is used for the view contact use case.
+			//so the user can view the contact (ViewContact displays all the information associated with
+			//the contact they saved).
 			Intent intentViewContact= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();
-
+			//the first name and last name are passed to the ViewContact activity.
 			extras.putString("firstName", fname);
 			extras.putString("lastName", lname);
 			intentViewContact.putExtras(extras);

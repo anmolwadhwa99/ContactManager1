@@ -26,7 +26,7 @@ public class Contact {
 	private byte[] image;
 	//constructor to initialize the private fields in the contact class 
 
-	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite){
+	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, byte[] image, String favourite){
 		setFirstName(firstName);
 		setLastName(lastName);
 		setNumber(number);
@@ -37,6 +37,7 @@ public class Contact {
 		setDateType(dateType);
 		setAddress(address);
 		setAddressType(addressType);
+		setImage(image);
 		setFavourite(favourite);
 
 

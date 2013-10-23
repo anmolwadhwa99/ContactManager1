@@ -1,15 +1,26 @@
 package awad865.project.ContactManager1;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 /**
@@ -34,6 +45,8 @@ public class EditContact extends Activity {
 	private DatabaseHandler databaseHandler;
 	private Contact currentContact;
 	private int pos;
+	private ImageButton editPic;
+	private final int IMAGE_SELECTION =1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +135,53 @@ public class EditContact extends Activity {
 		addressSpinner.setSelection(addPos);
 		int datePos = ((ArrayAdapter<CharSequence>) dateSpinner.getAdapter()).getPosition(currentContact.getDateType());
 		dateSpinner.setSelection(datePos);
+
+		//initialize the ImageButton
+		editPic = (ImageButton) findViewById(R.id.addImage);
+		//set default image
+		Bitmap bitMapResource = BitmapFactory.decodeByteArray(currentContact.getImage(), 0, currentContact.getImage().length);
+		if(bitMapResource != null) {
+			editPic.setImageBitmap(bitMapResource);
+		}
+		//addPic.setImageBitmap(bm);
+
+		editPic.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				//if the user clicks on the image view then take him to the Gallery
+				Intent imageIntent = new Intent(Intent.ACTION_PICK);
+				imageIntent.setType("image/*");
+				startActivityForResult(imageIntent, IMAGE_SELECTION);
+
+			}
+		});
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
+		//call parent constructor
+		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+
+		//if the value in IMAGE_SELECTION is selected
+		switch(requestCode){
+		case IMAGE_SELECTION:
+			if(resultCode == RESULT_OK){
+				try{
+					//we try to get the image and scale it down
+					BitmapFactory.Options options = new BitmapFactory.Options();
+					options.inScaled = true;
+					//initialise the imageURI, InputStream and Bitmap
+					final Uri imageURI = imageReturnedIntent.getData();
+					final InputStream inStr = getContentResolver().openInputStream(imageURI);
+					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
+					//we set that image
+					editPic.setImageBitmap(selectImg);
+				}catch(FileNotFoundException ex){
+					Log.e("File not found", "Selected image was not found", ex);
+				}
+			}
+		}
+
 	}
 
 	@Override
@@ -163,22 +223,36 @@ public class EditContact extends Activity {
 					String retrieveEmailSpinner = emailSpinner.getSelectedItem().toString();
 					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
 					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
-	
-							//create a new contact object with all those fields
-							Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveDate, retrieveDateSpinner, retrieveAddress, retrieveAddressSpinner,currentContact.getFavourite());
+					BitmapDrawable bmd = ((BitmapDrawable) editPic.getDrawable());
+					Bitmap photo = bmd.getBitmap();
+					ByteArrayOutputStream stream = new ByteArrayOutputStream();
+					photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					byte[] byteArray = stream.toByteArray();
 
-					//and update the contact inside the database
-					try {
-						databaseHandler.openDataBase();
-						databaseHandler.updateContact(replaceContact, currentContact.getFirstName(), currentContact.getLastName());
-						databaseHandler.close();
-					} catch (SQLException sqle) {
-						throw sqle;
+					if(firstName.getText().toString().length() == 0 && lastName.getText().toString().length() == 0) {
+						firstName.setError("A contact must be provided a first name");
+						lastName.setError("A contact must be provided a last name");
+					} else if (firstName.getText().toString().length() == 0) {
+						firstName.setError("A contact must be provided a first name");
+					} else if(lastName.getText().toString().length() == 0) {
+						lastName.setError("A contact must be provided a last name");
+					} else {
+						Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveDate, retrieveDateSpinner, retrieveAddress, retrieveAddressSpinner,byteArray, currentContact.getFavourite());
+						//and update the contact inside the database
+						try {
+							databaseHandler.openDataBase();
+							databaseHandler.updateContact(replaceContact, currentContact.getFirstName(), currentContact.getLastName());
+							databaseHandler.close();
+						} catch (SQLException sqle) {
+							throw sqle;
+						}
+						Intent intentSave = new Intent(getApplicationContext(),MainActivity.class);
+						intentSave.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						startActivity(intentSave);
 					}
+					//create a new contact object with all those fields
 					//after saving all the information, we go back to the MainActivity
-					Intent intentSave = new Intent(getApplicationContext(),MainActivity.class);
-					intentSave.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(intentSave);
+
 				}
 			});
 			dialog.setCancelable(true);
@@ -221,9 +295,9 @@ public class EditContact extends Activity {
 			dialogDelete.create().show();
 			return true;
 
-		
-		//if the user doesn't want to add a contact, and they click the cancel icon, then they
-		//are taken to MainActivity.
+
+			//if the user doesn't want to add a contact, and they click the cancel icon, then they
+			//are taken to MainActivity.
 		case R.id.action_edit_cancel:
 			Intent intentCancel = new Intent(this,MainActivity.class);
 			intentCancel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -33,7 +33,7 @@ import android.widget.Spinner;
  */
 
 public class AddContact extends Activity {
-	
+
 	//declare private fields
 	private EditText firstName;
 	private EditText lastName;
@@ -105,9 +105,12 @@ public class AddContact extends Activity {
 		//initialize the ImageButton
 		addPic = (ImageButton) findViewById(R.id.addImage);
 		//set default image
-		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.contacts_photo);
-		addPic.setImageBitmap(bm);
-		
+		int id = getResources().getIdentifier("awad865.project.ContactManager1:drawable/contacts_photo", null, null);
+
+		//Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.contacts_photo);
+		addPic.setImageResource(id);
+		//addPic.setImageBitmap(bm);
+
 		addPic.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -124,7 +127,7 @@ public class AddContact extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
 		//call parent constructor
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-		
+
 		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
 		case IMAGE_SELECTION:
@@ -170,20 +173,30 @@ public class AddContact extends Activity {
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
 			byte[] byteArray = stream.toByteArray();
-			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false");
-			
-			//add to database
-			try {
-				databaseHandler.openDataBase();
-				databaseHandler.addContact(contact);
-				databaseHandler.close();
-			} catch (SQLException sqle) {
-				throw sqle;
+
+			if(firstName.getText().toString().length() == 0 && lastName.getText().toString().length() == 0) {
+				firstName.setError("A contact must be provided a first name");
+				lastName.setError("A contact must be provided a last name");
+			} else if (firstName.getText().toString().length() == 0) {
+				firstName.setError("A contact must be provided a first name");
+			} else if(lastName.getText().toString().length() == 0) {
+				lastName.setError("A contact must be provided a last name");
+			} else {
+				Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), byteArray, "false");
+
+				//add to database
+				try {
+					databaseHandler.openDataBase();
+					databaseHandler.addContact(contact);
+					databaseHandler.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+				//go back to list of contacts
+				Intent intentMain = new Intent(getApplicationContext(),MainActivity.class);
+				intentMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intentMain);
 			}
-			//go back to list of contacts
-			Intent intentMain = new Intent(getApplicationContext(),MainActivity.class);
-			intentMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intentMain);
 			return true;
 
 			//if the cancel button is pressed on the action bar then the user is navigate to MainActivity
@@ -201,8 +214,9 @@ public class AddContact extends Activity {
 			return super.onOptionsItemSelected(item);
 
 		}
+
 	}
 
-	
-	 
+
+
 }

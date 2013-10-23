@@ -10,18 +10,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+/**
+ * In this activity, the user can change the sorting order 
+ * of the contacts in MainActivity
+ * @author Anmol Wadhwa (awad865,5603097)
+ *
+ */
 public class OptionActivity extends Activity {
 
-	//create two private fields of type button
+	//declare private field
 	private Button sortButton;
-	private Button displayContactListButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_option);
-		//code to enable the launcher icon, heading and the up button on the action bar
+		//code to enable the launcher icon, heading and the up button in the action bar
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayShowHomeEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -29,10 +33,9 @@ public class OptionActivity extends Activity {
 
 		//initialise a value to the private fields by using the findViewById() method.
 		sortButton=(Button) findViewById(R.id.button_sort);
-		displayContactListButton= (Button) findViewById(R.id.button_contactsToDisplay);
 
 
-		//have a listener attached to button1
+		//have a listener attached to sortButton
 		sortButton.setOnClickListener(new View.OnClickListener() {
 
 			// when the user clicks on this button, then this method (onClick()) is invoked.
@@ -47,6 +50,7 @@ public class OptionActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
+						//if the user selects to order the contacts
 						String number = "number";
 						MainActivity.order= number;
 						Intent intentMain= new Intent(OptionActivity.this, MainActivity.class);
@@ -92,25 +96,6 @@ public class OptionActivity extends Activity {
 			}
 		});
 
-		//have a listener attached to this button
-		displayContactListButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				//when the user clicks this button, a dialog box is generated
-				AlertDialog.Builder dialog = new AlertDialog.Builder(OptionActivity.this);
-
-				//set the title, the positive and negative button
-				dialog.setTitle("Display contact list by?");
-				dialog.setPositiveButton("Last name", null);
-				dialog.setNegativeButton("First name", null);
-
-				//create and show the dialog box
-				dialog.setCancelable(true);
-				dialog.create().show();
-
-			}
-		});
 
 	}
 	@Override

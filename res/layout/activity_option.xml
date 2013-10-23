@@ -32,20 +32,5 @@
         android:text="@string/button_sort"
         android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/button_help"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/button_help"
-        android:textSize="15sp" />
-
-    <Button
-        android:id="@+id/button_contactsToDisplay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/button_contacts_to_display"
-        android:textSize="15sp" />
 
 </LinearLayout>

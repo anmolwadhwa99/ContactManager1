@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.SQLException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 //The purpose of this activity is that when the user clicks on a contact 
@@ -30,6 +33,7 @@ public class ViewContact extends Activity {
 	private String currentFavourite = "";
 	private String theFirstName = "";
 	private String theLastName = "";
+	private ImageView image;
 
 
 	@Override
@@ -57,7 +61,7 @@ public class ViewContact extends Activity {
 		date.setKeyListener(null);
 		email =(EditText)findViewById(R.id.edit_email);
 		email.setKeyListener(null);
-
+		image = (ImageView) findViewById(R.id.viewImage);
 		//get the intent
 		Intent intent = getIntent();
 
@@ -85,7 +89,10 @@ public class ViewContact extends Activity {
 		address.setText(currentContact.getAddress());
 		date.setText(currentContact.getDate());
 		email.setText(currentContact.getEmail());
-
+		Bitmap bitMapResource = BitmapFactory.decodeByteArray(currentContact.getImage(), 0, currentContact.getImage().length);
+		if(bitMapResource != null) {
+			image.setImageBitmap(bitMapResource);
+		}
 	}
 
 	@Override
