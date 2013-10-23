@@ -1,13 +1,15 @@
 package awad865.project.ContactManager1;
 
-import java.sql.Blob;
+/**
+ * The purpose of this class is that to store all the values associated with a single contact and 
+ * an arrayList is created in MainActivity to contain all the Contact objects and this help manage 
+ * all the contacts in the database.
+ * @author Anmol Wadhwa, awad865, 5603097
+ */
 
-import org.apache.http.util.ByteArrayBuffer;
 
 
 
-
-//Contact class that creates contact objects which are stored in the public array list displayList
 public class Contact {
 	//private fields representing the information the contact can have
 	private String firstName;
@@ -24,7 +26,7 @@ public class Contact {
 	private byte[] image;
 	//constructor to initialize the private fields in the contact class 
 
-	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite,byte[] byteArray){
+	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, String favourite){
 		setFirstName(firstName);
 		setLastName(lastName);
 		setNumber(number);
@@ -36,7 +38,6 @@ public class Contact {
 		setAddress(address);
 		setAddressType(addressType);
 		setFavourite(favourite);
-		setImage(byteArray);
 
 
 	}
@@ -137,10 +138,4 @@ public class Contact {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-
-
-
-
-
-
 }

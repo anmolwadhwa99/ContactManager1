@@ -9,11 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * The purpose of this class is to create a custom list adapter for the ListView to
+ * be used in the Favourites and MainActivity activities.
+ * @author Anmol Wadhwa (awad865, 5603097)
+ *
+ */
+
 public class CustomListAdapter extends ArrayAdapter<Contact>{
 
+	//declare private fields
 	private Context context;
 	private List<Contact> contacts;
 
+	//set up constructor to initialise private fields
 	public CustomListAdapter(Context context, List<Contact> contacts){
 		super(context,android.R.layout.simple_list_item_1,contacts);
 
@@ -28,20 +37,19 @@ public class CustomListAdapter extends ArrayAdapter<Contact>{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		//Inflate the list item layout. Keep a reference to the inflated view.
-		//No root view specified
 		View listItemView = inflater.inflate(R.layout.custom_list_item_layout,null);
 
-		//Access TextView elements inside the view (note we must specify the parent view
-		//to look in)
+		//Access TextView elements inside the view to display in the ListView
 		TextView firstName =  (TextView)listItemView.findViewById(R.id.list_item_firstname);
 		TextView lastName =  (TextView)listItemView.findViewById(R.id.list_item_lastname);
 		TextView number =  (TextView)listItemView.findViewById(R.id.list_item_number);
 
-		//Set the text for each textview (use the position argument to find the appropriate element in the list)
+		//Set the text for each textview using the contacts list of contacts to find the appropriate contact
 		firstName.setText(contacts.get(position).getFirstName());
 		lastName.setText(contacts.get(position).getLastName());
 		number.setText(contacts.get(position).getNumber());
 
+		//return the view
 		return listItemView;
 	}
 

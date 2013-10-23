@@ -1,6 +1,9 @@
 package awad865.project.ContactManager1;
 
+
+
 import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -20,9 +23,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+/**
+ * The purpose of this class is to help manage the database. Activities in the application
+ * call specific methods that are declared in this class. This class sets up the database,
+ * gets contacts, gets contacts that are tagged as favourite and is used to change the sorting order of the
+ * contacts.
+ * @author Anmol Wadhwa (awad865, 5603097)
+
+ *
+ *This class was written in collaboration with JUHI GOSWAMI (jgos311)
+ */
 public class DatabaseHandler extends SQLiteOpenHelper {
-	
-	//declaring contants
+
+	//declare and initialise private constants.
 	private static String DB_NAME = "ContactsDb";
 	private static final int DB_VERSION = 1;
 	private static String DB_PATH = "/data/data/awad865.project.ContactManager1/databases/";
@@ -41,21 +54,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String ADDRESS_TYPE = "addresstype";
 	private static final String IMAGE = "image";
 	private static final String FAVOURITE = "favourite";
-	
-	
-	//the parent constructor is called
+
+
+	//the constructor is set up
 	public DatabaseHandler(Context context) {
+		//the parent constructor is called
 		super(context, DB_NAME, null, DB_VERSION);
+		//myContext field is initialized
 		this.myContext = context;
 	}
-	//method for creating the database
+	//method for creating the database for the first time
 	public void createDataBase() throws IOException{
 		boolean dbExist = checkDataBase();
 		if(dbExist){
 			//copyDataBase();
 		}else{
-			//By calling this method and empty database will be created into the default system path
-			//of your application so we are gonna be able to overwrite that database with our database.
+			//By calling this method an empty database will be created into the default system path
+			//of the application so we are gonna be able to overwrite that database with our database in the phone.
 			this.getReadableDatabase();
 			try {
 				copyDataBase();
@@ -108,6 +123,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	@Override
 	public synchronized void close() {
+		//close the database
 		if(myDataBase != null)
 			myDataBase.close();
 		super.close();
@@ -116,7 +132,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void addContact(Contact contact) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		//put all the appropriate edit text fields contact and store them in the database.
+		//put all the appropriate edit text fields in AddContact and store them in the database.
 		values.put(FIRST_NAME, contact.getFirstName()); 
 		values.put(LAST_NAME, contact.getLastName()); 
 		values.put(NUMBER, contact.getNumber()); 
@@ -136,18 +152,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Deleting single contact
 	public void deleteContact(String firstName, String lastName) {
 		SQLiteDatabase db = this.getWritableDatabase();
+		//look for the first name and last name of that contact, and then
+		//delete the whole row in the database
 		db.delete(TABLE_CONTACT,
 				FIRST_NAME + "=? AND " + LAST_NAME + "=?", 
 				new String[] {firstName, lastName});
 		db.close();
 	}
-	
+
 	//this method is used for editing a contact
 	public int updateContact(Contact contact, String firstName, String lastName) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		//we first find the existing contact, and overwrite the old
-		//values with the new values
+		//values with the new values that the user has put
 		values.put(FIRST_NAME, contact.getFirstName()); 
 		values.put(LAST_NAME, contact.getLastName());
 		values.put(NUMBER, contact.getNumber()); 
@@ -160,12 +178,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(DATE_TYPE, contact.getDateType());
 		values.put(IMAGE, contact.getImage());
 		values.put(FAVOURITE, contact.getFavourite());
-		
+
 		// updating row
 		return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
 				new String[] {firstName, lastName});
 	}
-
+	//this method is used to find all the contacts that are selected as a favourite by the user
+	//retrieve those contacts
 	public List<Contact> getFavouriteContacts() {
 		List<Contact> contactList = new ArrayList<Contact>();
 		String isFavourite = "true";
@@ -174,19 +193,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 
-		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
-				// Adding contact to list
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
 				contactList.add(contact);
 			} while (cursor.moveToNext());
 		}
 
 		return contactList;
 	}
-	
-	
+
+
 	public Contact getContact(String firstName, String lastName) {
 		List<Contact> contactList = new ArrayList<Contact>();
 		// Select All Query
@@ -197,7 +214,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());
@@ -205,10 +222,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 		return contactList.get(0);
 	}
-	
-	
-	
 
+
+
+	//this method is used to get all the contacts in the database. One argument is taken 
+	//in this method and that is order in which the contacts will be displayed
 	public List<Contact> getContacts(String order) {
 		List<Contact> contactList = new ArrayList<Contact>();
 		// Select All Query
@@ -220,7 +238,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11),cursor.getBlob(10));
+				Contact contact = new Contact(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5),cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(11));
 				// Adding contact to list
 				contactList.add(contact);
 			} while (cursor.moveToNext());

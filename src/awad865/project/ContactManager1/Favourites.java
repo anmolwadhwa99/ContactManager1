@@ -1,6 +1,6 @@
 package awad865.project.ContactManager1;
 
-//The purpose of this activity is to display a list of frequently contacted/viewed contacts
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import awad865.project.ContactManager1.MainActivity.listItemClickedListener;
 
+/**
+ * 
+ * @author Anmol Wadhwa
+ *
+ */
 public class Favourites extends Activity {
 
 	private ListView listView;
@@ -38,14 +43,7 @@ public class Favourites extends Activity {
 	}
 
 	private void setUpListView(){
-		//adding contact objects inside the public array list displayList if only 
-		//size of this list is zero.
 
-		/*if(displayList.size()==0){
-			displayList.add(new Contact("Anmol","Wadhwa","5374363","","",""));
-			displayList.add(new Contact("Juhi","Goswami","4234232","","",""));
-			displayList.add(new Contact("Laurence","Baldwick","243232","","",""));	
-		}*/
 		try {
 			databaseHandler.openDataBase();
 			displayList = databaseHandler.getFavouriteContacts();
@@ -78,8 +76,7 @@ public class Favourites extends Activity {
 			contactIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(contactIntent);
 			return true;
-			//if the "Groups" button is pressed on the action bar, then navigate the user
-			//to Groups activity.
+	
 		
 		default:
 			return super.onOptionsItemSelected(item);

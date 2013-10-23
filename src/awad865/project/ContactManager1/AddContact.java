@@ -33,7 +33,7 @@ import android.widget.Spinner;
  */
 
 public class AddContact extends Activity {
-
+	
 	//declare private fields
 	private EditText firstName;
 	private EditText lastName;
@@ -55,7 +55,7 @@ public class AddContact extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-		//code that enables the title on the action bar
+		//code that enables the title on the action bar and the up button
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		//initialising the databaseHandler object
@@ -107,7 +107,7 @@ public class AddContact extends Activity {
 		//set default image
 		Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.contacts_photo);
 		addPic.setImageBitmap(bm);
-
+		
 		addPic.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -124,7 +124,7 @@ public class AddContact extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
 		//call parent constructor
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-
+		
 		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
 		case IMAGE_SELECTION:
@@ -170,9 +170,9 @@ public class AddContact extends Activity {
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
 			photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
 			byte[] byteArray = stream.toByteArray();
-			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false",byteArray);
+			Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), "false");
+			
 			//add to database
-
 			try {
 				databaseHandler.openDataBase();
 				databaseHandler.addContact(contact);
@@ -203,6 +203,6 @@ public class AddContact extends Activity {
 		}
 	}
 
-
-
+	
+	 
 }
