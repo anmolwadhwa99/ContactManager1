@@ -41,17 +41,18 @@ public final class R {
         public static final int blue_colour=0x7f020006;
         public static final int call=0x7f020007;
         public static final int contactlist=0x7f020008;
-        public static final int content_discard=0x7f020009;
-        public static final int email=0x7f02000a;
-        public static final int favourite=0x7f02000b;
-        public static final int groups=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int ic_navigation_accept=0x7f02000e;
-        public static final int ic_navigation_cancel=0x7f02000f;
-        public static final int ic_social_person=0x7f020010;
-        public static final int messaging=0x7f020011;
-        public static final int overflow=0x7f020012;
-        public static final int search=0x7f020013;
+        public static final int contacts_icon=0x7f020009;
+        public static final int content_discard=0x7f02000a;
+        public static final int email=0x7f02000b;
+        public static final int favourite=0x7f02000c;
+        public static final int groups=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int ic_navigation_accept=0x7f02000f;
+        public static final int ic_navigation_cancel=0x7f020010;
+        public static final int ic_social_person=0x7f020011;
+        public static final int messaging=0x7f020012;
+        public static final int overflow=0x7f020013;
+        public static final int search=0x7f020014;
     }
     public static final class id {
         public static final int action_cancel=0x7f0a002b;
@@ -64,7 +65,7 @@ public final class R {
         public static final int action_list_of_contacts=0x7f0a0032;
         public static final int action_save=0x7f0a002a;
         public static final int action_settings=0x7f0a0029;
-        public static final int addImage=0x7f0a0003;
+        public static final int addImage=0x7f0a0004;
         public static final int button_addcontact=0x7f0a0021;
         public static final int button_addgroup=0x7f0a001f;
         public static final int button_call=0x7f0a0035;
@@ -86,7 +87,7 @@ public final class R {
         public static final int edit_first_name=0x7f0a0002;
         public static final int edit_group=0x7f0a0016;
         public static final int edit_group_contact_name=0x7f0a0018;
-        public static final int edit_last_name=0x7f0a0004;
+        public static final int edit_last_name=0x7f0a0003;
         public static final int edit_number=0x7f0a0007;
         public static final int group_cancel=0x7f0a002d;
         public static final int group_save=0x7f0a002c;
