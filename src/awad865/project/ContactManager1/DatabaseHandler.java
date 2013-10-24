@@ -58,9 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	//the constructor is set up
 	public DatabaseHandler(Context context) {
-		//the parent constructor is called
 		super(context, DB_NAME, null, DB_VERSION);
-		//myContext field is initialized
 		this.myContext = context;
 	}
 	//method for creating the database for the first time
@@ -79,7 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 			}
 		}
 	}
-
+	//check if the database exists
 	private boolean checkDataBase(){
 		SQLiteDatabase checkDB = null;
 		try{
@@ -183,7 +181,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return db.update(TABLE_CONTACT, values, FIRST_NAME + "=? AND " + LAST_NAME + "=?",
 				new String[] {firstName, lastName});
 	}
-	//this method is used to find all the contacts that are selected as a favourite by the user
+	//this method is used to find all the contacts that are tagged as a favourite by the user
 	//retrieve those contacts
 	public List<Contact> getFavouriteContacts() {
 		List<Contact> contactList = new ArrayList<Contact>();
@@ -204,6 +202,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	}
 
 
+	//get a specific contact from the database.
 	public Contact getContact(String firstName, String lastName) {
 		List<Contact> contactList = new ArrayList<Contact>();
 		// Select All Query
@@ -223,13 +222,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		return contactList.get(0);
 	}
 
-
-
 	//this method is used to get all the contacts in the database. One argument is taken 
 	//in this method and that is order in which the contacts will be displayed
 	public List<Contact> getContacts(String order) {
 		List<Contact> contactList = new ArrayList<Contact>();
-		// Select All Query
 		//this bottom line is used to change the sorting order of the contact list
 		String selectQuery = "SELECT * FROM " + TABLE_CONTACT +" ORDER BY " + order;
 		SQLiteDatabase db = this.getWritableDatabase();

@@ -34,7 +34,6 @@ import android.widget.Spinner;
 
 public class AddContact extends Activity {
 
-	//declare private fields
 	private EditText firstName;
 	private EditText lastName;
 	private EditText number;
@@ -58,10 +57,8 @@ public class AddContact extends Activity {
 		//code that enables the title on the action bar and the up button
 		getActionBar().setDisplayShowTitleEnabled(true);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		//initialising the databaseHandler object
 		databaseHandler = new DatabaseHandler(this);
 
-		//initialise private fields
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
 		number = (EditText)findViewById(R.id.edit_number);
@@ -102,7 +99,6 @@ public class AddContact extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		dateSpinner.setAdapter(adapter);
 
-		//initialize the ImageButton
 		addPic = (ImageButton) findViewById(R.id.addImage);
 		//set default image
 		int id = getResources().getIdentifier("awad865.project.ContactManager1:drawable/contacts_photo", null, null);
@@ -122,19 +118,17 @@ public class AddContact extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
-		//call parent constructor
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
 		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
+				//get the image as a bitmap
 				Bundle extras = imageReturnedIntent.getExtras();
 				Bitmap bmp = (Bitmap) extras.get("data");
 				Uri imUri = imageReturnedIntent.getData();
 				addPic.setImageBitmap(bmp);
-
-
 			}
 		}
 

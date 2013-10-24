@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 
-
+		//initialize private fields
 		listView = (ListView)findViewById(R.id.main_contact_listview);
 		databaseHandler = new DatabaseHandler(this);
 		sortButton = (ImageButton)findViewById(R.id.button_sort_button);
@@ -67,7 +67,6 @@ public class MainActivity extends Activity {
 		//have a listener attached to sortButton
 		sortButton.setOnClickListener(new View.OnClickListener() {
 
-			// when the user clicks on this button, then this method (onClick()) is invoked.
 			@Override
 			public void onClick(View arg0) {
 				//creating a new dialog box with a title, positive button, negative button and neutral button
@@ -88,7 +87,7 @@ public class MainActivity extends Activity {
 				});
 
 				dialogBuilder.setPositiveButton("Last name", new DialogInterface.OnClickListener() {
-					//if the user presses the Last name, then the field order is set to last and 
+					//if the user presses the Last name, then the field order is set to lastname and 
 					//the list is set up again.
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -104,7 +103,7 @@ public class MainActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						//if the user chooses firstname, then the variable order is 
+						//if the user chooses firstname, then the field order is 
 						//set to firstname, and the list is refreshed.
 						String first = "firstname";
 						order= first;
@@ -114,22 +113,14 @@ public class MainActivity extends Activity {
 				});
 
 
-				//allow the user to cancel the dialog box
 				dialogBuilder.setCancelable(true);
 
-				//able to create and show the dialog box
 				dialogBuilder.create().show();
 			}
 		});
 
 
 	}
-
-
-
-
-
-
 
 
 	private void setUpListView(){
@@ -201,8 +192,7 @@ public class MainActivity extends Activity {
 			String lname=displayList.get(clickedViewPosition).getLastName();
 
 			//Using the bundle, we pass this information on to a new activity called ViewContact
-			//so the user can view the contact (ViewContact displays all the information associated with
-			//the contact they saved).
+			//so the user can view the contact
 			Intent intentViewContact= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();
 			//the first name and last name are passed to the ViewContact activity.

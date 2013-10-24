@@ -18,11 +18,9 @@ import android.widget.TextView;
 
 public class CustomListAdapter extends ArrayAdapter<Contact>{
 
-	//declare private fields
 	private Context context;
 	private List<Contact> contacts;
 
-	//set up constructor to initialize private fields
 	public CustomListAdapter(Context context, List<Contact> contacts){
 		super(context,android.R.layout.simple_list_item_1,contacts);
 
@@ -44,12 +42,11 @@ public class CustomListAdapter extends ArrayAdapter<Contact>{
 		TextView lastName =  (TextView)listItemView.findViewById(R.id.list_item_lastname);
 		TextView number =  (TextView)listItemView.findViewById(R.id.list_item_number);
 
-		//Set the text for each textview using the contacts list of contacts to find the appropriate contact
+		//Set the text for each textview
 		firstName.setText(contacts.get(position).getFirstName());
 		lastName.setText(contacts.get(position).getLastName());
 		number.setText(contacts.get(position).getNumber());
 
-		//return the view
 		return listItemView;
 	}
 

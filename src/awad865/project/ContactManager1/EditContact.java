@@ -32,7 +32,6 @@ import android.widget.Toast;
  */
 public class EditContact extends Activity {
 
-	//declare private fields
 	private EditText firstName;
 	private EditText lastName;
 	private EditText number;
@@ -91,7 +90,6 @@ public class EditContact extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		dateSpinner.setAdapter(adapter);
 
-		//the private fields are now initialised using findViewById().
 
 		firstName = (EditText)findViewById(R.id.edit_first_name);
 		lastName = (EditText)findViewById(R.id.edit_last_name);
@@ -100,7 +98,6 @@ public class EditContact extends Activity {
 		date = (EditText)findViewById(R.id.edit_date);
 		email =(EditText)findViewById(R.id.edit_email);
 
-		// the intent and bundle from ViewContact is retrieved.
 		Intent editContactIntent = getIntent();
 
 
@@ -111,7 +108,7 @@ public class EditContact extends Activity {
 
 		try {
 			//get all the contact information that are associated with that
-			//first name and last name
+			//first name and last name from the database
 			databaseHandler.openDataBase();
 			currentContact = databaseHandler.getContact(theFirstName, theLastName);
 			databaseHandler.close();
@@ -137,7 +134,6 @@ public class EditContact extends Activity {
 		int datePos = ((ArrayAdapter<CharSequence>) dateSpinner.getAdapter()).getPosition(currentContact.getDateType());
 		dateSpinner.setSelection(datePos);
 
-		//initialize the ImageButton
 		editPic = (ImageButton) findViewById(R.id.addImage);
 		//set default image
 		Bitmap bitMapResource = BitmapFactory.decodeByteArray(currentContact.getImage(), 0, currentContact.getImage().length);
@@ -158,14 +154,13 @@ public class EditContact extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
-		//call parent constructor
-		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+				super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
 		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
-
+				//covert image to bitmap and set it
 				Bundle extras = imageReturnedIntent.getExtras();
 				Bitmap bmp = (Bitmap) extras.get("data");
 				Uri imUri = imageReturnedIntent.getData();
