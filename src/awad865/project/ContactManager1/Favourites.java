@@ -26,7 +26,6 @@ import awad865.project.ContactManager1.MainActivity.listItemClickedListener;
  * @author Anmol Wadhwa (awad865, 5603097)
  */
 public class Favourites extends Activity {
-	//declare private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
 	private List <Contact> displayList = new ArrayList<Contact>();
@@ -100,7 +99,6 @@ public class Favourites extends Activity {
 			String fname=displayList.get(clickedViewPosition).getFirstName();
 			String lname=displayList.get(clickedViewPosition).getLastName();
 
-			// TODO Auto-generated method stub
 
 			Intent viewContactIntent= new Intent(clickedView.getContext(), ViewContact.class);
 			Bundle extras = new Bundle();

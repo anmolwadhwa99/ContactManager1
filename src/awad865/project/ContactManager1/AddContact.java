@@ -176,13 +176,11 @@ public class AddContact extends Activity {
 			}
 			return true;
 
-			//if the cancel button is pressed on the action bar then the user is navigate to MainActivity
 		case R.id.action_cancel:
 			Intent intentCancel = new Intent(this,MainActivity.class);
 			intentCancel.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intentCancel);
 			return true;
-			//if the up button is pressed, then the user is taken back to the MainActivity
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;

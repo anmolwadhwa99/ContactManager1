@@ -187,7 +187,6 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onItemClick(AdapterView<?> parentView, View clickedView, int clickedViewPosition, long id) {
-			//we get the first name and last name of the contact in the displayList
 			String fname=displayList.get(clickedViewPosition).getFirstName();
 			String lname=displayList.get(clickedViewPosition).getLastName();
 

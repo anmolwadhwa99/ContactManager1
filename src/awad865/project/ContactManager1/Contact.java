@@ -1,9 +1,9 @@
 package awad865.project.ContactManager1;
 
 /**
- * The purpose of this class is that to store all the values associated with a single contact and 
- * an arrayList is created in MainActivity to contain all the Contact objects and this help manage 
- * all the contacts in the database.
+ * The purpose of this class is that to store all the values associated with a single contact. All the 
+ * contact objects are stored in an ArrayList in MainActivity that manages all the contacts in 
+ * the application.
  * @author Anmol Wadhwa, awad865, 5603097
  */
 
@@ -24,7 +24,6 @@ public class Contact {
 	private String dateType;
 	private String favourite;
 	private byte[] image;
-	//constructor to initialize the private fields in the contact class 
 
 	public Contact(String firstName, String lastName, String number, String numberType, String email, String emailType, String date, String dateType, String address, String addressType, byte[] image, String favourite){
 		setFirstName(firstName);

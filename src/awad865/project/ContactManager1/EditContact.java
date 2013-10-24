@@ -154,7 +154,7 @@ public class EditContact extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
-				super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
 		//if the value in IMAGE_SELECTION is selected
 		switch(requestCode){
@@ -211,8 +211,7 @@ public class EditContact extends Activity {
 					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
 					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
 
-					//we get the image from the contact object, and convert
-					//it to a Bitmap and set it in the ImageButton.
+					//convert the image from a bit map to byte array
 					BitmapDrawable bmd = ((BitmapDrawable) editPic.getDrawable());
 					Bitmap photo = bmd.getBitmap();
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
@@ -239,7 +238,6 @@ public class EditContact extends Activity {
 
 						Intent intentSave = new Intent(getApplicationContext(),MainActivity.class);
 						intentSave.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
 						startActivity(intentSave);
 
 					}
@@ -298,7 +296,5 @@ public class EditContact extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-
 
 }
