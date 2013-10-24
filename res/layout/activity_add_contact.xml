@@ -5,7 +5,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".AddContact" >
 
@@ -57,10 +57,10 @@
                 android:id="@+id/addImage"
                 android:layout_width="83dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/contacts_photo"
                 android:scaleType="centerCrop" />
-
         </LinearLayout>
 
         <TextView

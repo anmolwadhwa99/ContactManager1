@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 /**
  * This class is used so that the user can edit a contact in the application, can either save 
@@ -143,15 +144,13 @@ public class EditContact extends Activity {
 		if(bitMapResource != null) {
 			editPic.setImageBitmap(bitMapResource);
 		}
-		//addPic.setImageBitmap(bm);
 
 		editPic.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				//if the user clicks on the image view then take him to the Gallery
-				Intent imageIntent = new Intent(Intent.ACTION_PICK);
-				imageIntent.setType("image/*");
+				//if the user clicks on the image view then take him to the camera to take an image.
+				Intent imageIntent = new Intent("android.media.action.IMAGE_CAPTURE");
 				startActivityForResult(imageIntent, IMAGE_SELECTION);
 
 			}
@@ -166,19 +165,12 @@ public class EditContact extends Activity {
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
-				try{
-					//we try to get the image and scale it down
-					BitmapFactory.Options options = new BitmapFactory.Options();
-					options.inScaled = true;
-					//initialise the imageURI, InputStream and Bitmap
-					final Uri imageURI = imageReturnedIntent.getData();
-					final InputStream inStr = getContentResolver().openInputStream(imageURI);
-					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
-					//we set that image
-					editPic.setImageBitmap(selectImg);
-				}catch(FileNotFoundException ex){
-					Log.e("File not found", "Selected image was not found", ex);
-				}
+
+				Bundle extras = imageReturnedIntent.getExtras();
+				Bitmap bmp = (Bitmap) extras.get("data");
+				Uri imUri = imageReturnedIntent.getData();
+				editPic.setImageBitmap(bmp);
+
 			}
 		}
 
@@ -223,19 +215,20 @@ public class EditContact extends Activity {
 					String retrieveEmailSpinner = emailSpinner.getSelectedItem().toString();
 					String retrieveAddressSpinner = addressSpinner.getSelectedItem().toString();
 					String retrieveDateSpinner = dateSpinner.getSelectedItem().toString();
+
+					//we get the image from the contact object, and convert
+					//it to a Bitmap and set it in the ImageButton.
 					BitmapDrawable bmd = ((BitmapDrawable) editPic.getDrawable());
 					Bitmap photo = bmd.getBitmap();
 					ByteArrayOutputStream stream = new ByteArrayOutputStream();
-					photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+					photo.compress(Bitmap.CompressFormat.PNG, 90, stream);
 					byte[] byteArray = stream.toByteArray();
 
-					if(firstName.getText().toString().length() == 0 && lastName.getText().toString().length() == 0) {
+					//if the user does not add a firstname, a error 
+					//is thrown and the user must add a first name.
+					if(firstName.getText().toString().length() == 0) {
 						firstName.setError("A contact must be provided a first name");
-						lastName.setError("A contact must be provided a last name");
-					} else if (firstName.getText().toString().length() == 0) {
-						firstName.setError("A contact must be provided a first name");
-					} else if(lastName.getText().toString().length() == 0) {
-						lastName.setError("A contact must be provided a last name");
+
 					} else {
 						Contact replaceContact = new Contact(retrieveFirstName, retrieveLastName, retrieveNumber, retrieveNumberSpinner, retrieveEmail, retrieveEmailSpinner, retrieveDate, retrieveDateSpinner, retrieveAddress, retrieveAddressSpinner,byteArray, currentContact.getFavourite());
 						//and update the contact inside the database
@@ -246,12 +239,15 @@ public class EditContact extends Activity {
 						} catch (SQLException sqle) {
 							throw sqle;
 						}
+
+						//after saving all the information, we go back to the MainActivity
+
 						Intent intentSave = new Intent(getApplicationContext(),MainActivity.class);
 						intentSave.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 						startActivity(intentSave);
+
 					}
-					//create a new contact object with all those fields
-					//after saving all the information, we go back to the MainActivity
 
 				}
 			});

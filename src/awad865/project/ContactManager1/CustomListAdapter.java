@@ -22,7 +22,7 @@ public class CustomListAdapter extends ArrayAdapter<Contact>{
 	private Context context;
 	private List<Contact> contacts;
 
-	//set up constructor to initialise private fields
+	//set up constructor to initialize private fields
 	public CustomListAdapter(Context context, List<Contact> contacts){
 		super(context,android.R.layout.simple_list_item_1,contacts);
 

@@ -6,26 +6,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 /**
  * This is the activity that opens by default when the application is run.
  * The purpose of this activity is to show the list of contacts the user 
  * has stored. The user can add a new contact, change the sorting order 
- * of the list by clicking on the addContact and moreOptions button in this 
+ * of the list by clicking on the addContact and sort button in this 
  * activity.
  * 
  * @author Anmol Wadhwa (awad865, 5603097)
@@ -36,7 +33,8 @@ public class MainActivity extends Activity {
 	//declare private fields
 	private ListView listView;
 	private DatabaseHandler databaseHandler;
-	
+	private ImageButton sortButton;
+
 	//this variable is used to manage the sorting order of the list. By default,
 	//the contacts are sorted by first name.
 	public static  String order = "firstname";
@@ -51,10 +49,11 @@ public class MainActivity extends Activity {
 		getActionBar().setDisplayShowTitleEnabled(false);
 		getActionBar().setDisplayShowHomeEnabled(false);
 
-		
+
 		listView = (ListView)findViewById(R.id.main_contact_listview);
 		databaseHandler = new DatabaseHandler(this);
-		
+		sortButton = (ImageButton)findViewById(R.id.button_sort_button);
+
 		//when we first open the application, the database is created
 		try {
 			databaseHandler.createDataBase();
@@ -64,7 +63,74 @@ public class MainActivity extends Activity {
 
 
 		setUpListView();
+
+		//have a listener attached to sortButton
+		sortButton.setOnClickListener(new View.OnClickListener() {
+
+			// when the user clicks on this button, then this method (onClick()) is invoked.
+			@Override
+			public void onClick(View arg0) {
+				//creating a new dialog box with a title, positive button, negative button and neutral button
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
+
+				dialogBuilder.setTitle("Sort contact list by?");
+				dialogBuilder.setMessage("Select your sorting order");
+				dialogBuilder.setNegativeButton("Phone number", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1) {
+						//if the user chooses the number button, then the field order 
+						//is set to number and the list is refreshed.
+						String number = "number";
+						order= number;
+						setUpListView();
+					}
+				});
+
+				dialogBuilder.setPositiveButton("Last name", new DialogInterface.OnClickListener() {
+					//if the user presses the Last name, then the field order is set to last and 
+					//the list is set up again.
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						String last = "lastname";
+						order= last;
+						setUpListView();
+
+					}
+				});
+
+				dialogBuilder.setNeutralButton("First name", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//if the user chooses firstname, then the variable order is 
+						//set to firstname, and the list is refreshed.
+						String first = "firstname";
+						order= first;
+						setUpListView();
+
+					}
+				});
+
+
+				//allow the user to cancel the dialog box
+				dialogBuilder.setCancelable(true);
+
+				//able to create and show the dialog box
+				dialogBuilder.create().show();
+			}
+		});
+
+
 	}
+
+
+
+
+
+
+
 
 	private void setUpListView(){
 
@@ -90,8 +156,8 @@ public class MainActivity extends Activity {
 
 	public boolean onOptionsItemSelected(MenuItem item){
 		switch(item.getItemId()){
-			//if the favourites button is clicked on the action bar, then navigate
-			//to the favourites activity
+		//if the favourites button is clicked on the action bar, then navigate
+		//to the favourites activity
 		case R.id.action_favourites:
 			Intent intentFavourite = new Intent(this,Favourites.class);
 			intentFavourite.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -122,16 +188,6 @@ public class MainActivity extends Activity {
 		startActivity(intentAddContact);
 
 	}
-	//when the image button moreOptions is pressed on the MainActivity.java
-	//then this method is called and the user is navigated to the OptionActivity activity
-	public void moreOptions(View view){
-		Intent intentOptions = new Intent(this,OptionActivity.class);
-		intentOptions.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-		startActivity(intentOptions);
-
-	}
-
 
 	//method that implements AdapterView.OnItemClickListener, so if the user clicks on a contact inside
 	//list view then the method inside this class is invoked.
@@ -144,7 +200,6 @@ public class MainActivity extends Activity {
 			String fname=displayList.get(clickedViewPosition).getFirstName();
 			String lname=displayList.get(clickedViewPosition).getLastName();
 
-			// TODO Auto-generated method stub
 			//Using the bundle, we pass this information on to a new activity called ViewContact
 			//so the user can view the contact (ViewContact displays all the information associated with
 			//the contact they saved).

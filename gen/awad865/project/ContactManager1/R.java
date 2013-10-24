@@ -52,24 +52,24 @@ public final class R {
         public static final int search=0x7f020011;
     }
     public static final class id {
-        public static final int action_cancel=0x7f0a0024;
-        public static final int action_edit_cancel=0x7f0a0026;
-        public static final int action_edit_contact=0x7f0a002a;
-        public static final int action_edit_delete=0x7f0a0027;
-        public static final int action_edit_save=0x7f0a0025;
-        public static final int action_favourites=0x7f0a0029;
-        public static final int action_list_of_contacts=0x7f0a0028;
-        public static final int action_save=0x7f0a0023;
-        public static final int action_settings=0x7f0a0022;
+        public static final int action_cancel=0x7f0a0023;
+        public static final int action_edit_cancel=0x7f0a0025;
+        public static final int action_edit_contact=0x7f0a0029;
+        public static final int action_edit_delete=0x7f0a0026;
+        public static final int action_edit_save=0x7f0a0024;
+        public static final int action_favourites=0x7f0a0028;
+        public static final int action_list_of_contacts=0x7f0a0027;
+        public static final int action_save=0x7f0a0022;
+        public static final int action_settings=0x7f0a0021;
         public static final int addImage=0x7f0a0004;
         public static final int button_addcontact=0x7f0a001b;
-        public static final int button_call=0x7f0a002b;
-        public static final int button_email=0x7f0a002e;
-        public static final int button_favourite=0x7f0a002d;
-        public static final int button_messaging=0x7f0a002c;
+        public static final int button_call=0x7f0a002a;
+        public static final int button_email=0x7f0a002d;
+        public static final int button_favourite=0x7f0a002c;
+        public static final int button_messaging=0x7f0a002b;
         public static final int button_options=0x7f0a0019;
         public static final int button_search=0x7f0a0018;
-        public static final int button_sort=0x7f0a001d;
+        public static final int button_sort_button=0x7f0a001c;
         public static final int contact_address_spinner=0x7f0a0010;
         public static final int contact_date_spinner=0x7f0a0014;
         public static final int contact_email_spinner=0x7f0a000c;
@@ -85,37 +85,34 @@ public final class R {
         public static final int lbl_event=0x7f0a0011;
         public static final int lbl_name=0x7f0a0000;
         public static final int lbl_number=0x7f0a0005;
-        public static final int list_item_firstname=0x7f0a001f;
-        public static final int list_item_lastname=0x7f0a0020;
-        public static final int list_item_number=0x7f0a0021;
+        public static final int list_item_firstname=0x7f0a001e;
+        public static final int list_item_lastname=0x7f0a001f;
+        public static final int list_item_number=0x7f0a0020;
         public static final int main_activity_heading=0x7f0a0015;
         public static final int main_contact_listview=0x7f0a001a;
         public static final int main_favourite_listview=0x7f0a0017;
-        public static final int viewImage=0x7f0a001e;
+        public static final int viewImage=0x7f0a001d;
         public static final int view_address=0x7f0a000e;
         public static final int view_email=0x7f0a000a;
         public static final int view_event=0x7f0a0012;
         public static final int view_heading_main_activity=0x7f0a0016;
         public static final int view_name=0x7f0a0001;
         public static final int view_number=0x7f0a0006;
-        public static final int view_option_heading=0x7f0a001c;
     }
     public static final class layout {
         public static final int activity_add_contact=0x7f030000;
         public static final int activity_edit_contact=0x7f030001;
         public static final int activity_favourites=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int activity_option=0x7f030004;
-        public static final int activity_view_contact=0x7f030005;
-        public static final int custom_list_item_layout=0x7f030006;
+        public static final int activity_view_contact=0x7f030004;
+        public static final int custom_list_item_layout=0x7f030005;
     }
     public static final class menu {
         public static final int add_contact=0x7f090000;
         public static final int edit_contact=0x7f090001;
         public static final int favourites=0x7f090002;
         public static final int main_activity_actions=0x7f090003;
-        public static final int option=0x7f090004;
-        public static final int view_contact=0x7f090005;
+        public static final int view_contact=0x7f090004;
     }
     public static final class string {
         public static final int action_favourites=0x7f050005;

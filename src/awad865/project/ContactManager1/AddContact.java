@@ -107,17 +107,14 @@ public class AddContact extends Activity {
 		//set default image
 		int id = getResources().getIdentifier("awad865.project.ContactManager1:drawable/contacts_photo", null, null);
 
-		//Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.contacts_photo);
 		addPic.setImageResource(id);
-		//addPic.setImageBitmap(bm);
 
 		addPic.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				//if the user clicks on the image view then take him to the Gallery
-				Intent imageIntent = new Intent(Intent.ACTION_PICK);
-				imageIntent.setType("image/*");
+				//if the user clicks on the image view then take him to the camera to take an image.
+				Intent imageIntent = new Intent("android.media.action.IMAGE_CAPTURE");
 				startActivityForResult(imageIntent, IMAGE_SELECTION);
 
 			}
@@ -132,26 +129,16 @@ public class AddContact extends Activity {
 		switch(requestCode){
 		case IMAGE_SELECTION:
 			if(resultCode == RESULT_OK){
-				try{
-					//we try to get the image and scale it down
-					BitmapFactory.Options options = new BitmapFactory.Options();
-					options.inScaled = true;
-					//initialise the imageURI, InputStream and Bitmap
-					final Uri imageURI = imageReturnedIntent.getData();
-					final InputStream inStr = getContentResolver().openInputStream(imageURI);
-					final Bitmap selectImg = BitmapFactory.decodeStream(inStr, null, options);
-					//we set that image
-					addPic.setImageBitmap(selectImg);
-				}catch(FileNotFoundException ex){
-					Log.e("File not found", "Selected image was not found", ex);
-				}
+				Bundle extras = imageReturnedIntent.getExtras();
+				Bitmap bmp = (Bitmap) extras.get("data");
+				Uri imUri = imageReturnedIntent.getData();
+				addPic.setImageBitmap(bmp);
+
+
 			}
 		}
 
 	}
-
-
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -171,16 +158,12 @@ public class AddContact extends Activity {
 			BitmapDrawable bmd = ((BitmapDrawable) addPic.getDrawable());
 			Bitmap photo = bmd.getBitmap();
 			ByteArrayOutputStream stream = new ByteArrayOutputStream();
-			photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			photo.compress(Bitmap.CompressFormat.PNG, 90, stream);
 			byte[] byteArray = stream.toByteArray();
-
-			if(firstName.getText().toString().length() == 0 && lastName.getText().toString().length() == 0) {
-				firstName.setError("A contact must be provided a first name");
-				lastName.setError("A contact must be provided a last name");
-			} else if (firstName.getText().toString().length() == 0) {
-				firstName.setError("A contact must be provided a first name");
-			} else if(lastName.getText().toString().length() == 0) {
-				lastName.setError("A contact must be provided a last name");
+			//if the user does not add a first name, then a error 
+			//is thrown telling the user that they need to add the first name.
+			if(firstName.getText().toString().length() == 0) {
+				firstName.setError("A first name for the contact must be provided");
 			} else {
 				Contact contact = new Contact(firstName.getText().toString(),lastName.getText().toString(),number.getText().toString(), numberSpinner.getSelectedItem().toString(), email.getText().toString(), emailSpinner.getSelectedItem().toString(), date.getText().toString(), dateSpinner.getSelectedItem().toString(), address.getText().toString(), addressSpinner.getSelectedItem().toString(), byteArray, "false");
 

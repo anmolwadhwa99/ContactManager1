@@ -124,27 +124,44 @@ public class ViewContact extends Activity {
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 			//if the user presses the call button in the view contact activity, then 
-			//they are directed to the dialer and the number they saved is dialed
+			//they are directed to the dialer and the number is dialed. If the user does
+			//provide a number, then a Toast message is thrown telling the use that
+			//they have not provided a number
 		case R.id.button_call:
-			try {
-				Intent intentCall = new Intent(Intent.ACTION_CALL);
-				intentCall.setData(Uri.parse("tel:"+number.getText().toString()));
-				intentCall.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intentCall);
-			} catch (ActivityNotFoundException activityException) {
-				Log.e("Calling a Phone Number", "Call failed", activityException);
+			if(!number.getText().toString().equals("")){
+				try {
+					Intent intentCall = new Intent(Intent.ACTION_CALL);
+					intentCall.setData(Uri.parse("tel:"+number.getText().toString()));
+					intentCall.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intentCall);
+				} catch (ActivityNotFoundException activityException) {
+					Log.e("Calling a Phone Number", "Call failed", activityException);
+				}
+			}else{
+				Toast.makeText(ViewContact.this, "No number provided", Toast.LENGTH_LONG).show();
 			}
 			return true;
 			//if the messaging button is pressed, then the user 
 			//is navigated to the messaging application and they can
-			//compose a message to the number saved.
+			//compose a message to the number saved. If no number is 
+			//provided, then a toast message is thrown telling 
+			//the user a number is not provided.
 		case R.id.button_messaging:
-			Intent intentMessage = new Intent(Intent.ACTION_SENDTO, 
-					Uri.fromParts("sms", number.getText().toString(), null));
-			intentMessage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intentMessage);
+			if(!number.getText().toString().equals("")){
+				Intent intentMessage = new Intent(Intent.ACTION_SENDTO, 
+						Uri.fromParts("sms", number.getText().toString(), null));
+				intentMessage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intentMessage);
+			}else{
+				Toast.makeText(ViewContact.this, "No number provided", Toast.LENGTH_LONG).show();
+
+			}
 			return true;
 
+			//if the user clicks on the favourite icon, then a Toast is thrown 
+			//telling the user the contact has been added to Favourites. If the user clicks
+			// on the icon again, then another Toast message is thrown telling the user the
+			//contact has been removed from favourites.
 		case R.id.button_favourite:
 			if(currentContact.getFavourite().equals("false")) {
 				currentContact.setFavourite("true");
@@ -153,6 +170,7 @@ public class ViewContact extends Activity {
 				currentContact.setFavourite("false");
 				Toast.makeText(ViewContact.this, "Contact has been removed from Favourites", Toast.LENGTH_LONG).show();
 			}
+			//we add the value of variable favourite back into the database by updating the database
 			try {
 				databaseHandler.openDataBase();
 				databaseHandler.updateContact(currentContact, currentContact.getFirstName(), currentContact.getLastName());
@@ -162,36 +180,44 @@ public class ViewContact extends Activity {
 			}
 			return true;
 
+
+			//If the user presses the email icon, then they are taken to email application and
+			//they can compose an email there. However, if the user does not provide an email address,
+			//then a Toast message is thrown telling the user that they have not added an email address.
 		case R.id.button_email:
-			try{
-				//the intent to send
-				Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-				//setting the type to be plain text
-				emailIntent.setType("message/rfc822");
+			if(!email.getText().toString().equals("")){
+				try{
+					//the intent to send
+					Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+					//setting the type to be plain text
+					emailIntent.setType("message/rfc822");
 
-				//Variables to contain receiver, and preset subject and message
-				String receiver = email.getText().toString();
-				String subject= "Subject";
-				String body = "Message here";
+					//Variables to contain receiver, and preset subject and message
+					String receiver = email.getText().toString();
+					String subject= "Subject";
+					String body = "Message here";
 
-				//Setting the receiver
-				emailIntent.setData(Uri.parse("mailto:"+ receiver));
-				//Putting in the preset-subject line into the intent
-				emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-				//Putting the preset-message into the intent
-				emailIntent.putExtra(Intent.EXTRA_TEXT, body);
-				//Bringing up email composer or email chooser
+					//Setting the receiver
+					emailIntent.setData(Uri.parse("mailto:"+ receiver));
+					//Putting in the preset-subject line into the intent
+					emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+					//Putting the preset-message into the intent
+					emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+					//Bringing up email composer or email chooser
 
-				emailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					emailIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-				startActivity(emailIntent);
+					startActivity(emailIntent);
 
 
-			}catch(ActivityNotFoundException ex){
-				//Logging failure into log-cat
-				Log.e("Creating email","Emailing failed",ex);
-
+				}catch(ActivityNotFoundException ex){
+					//Logging failure into log-cat
+					Log.e("Creating email","Emailing failed",ex);
+				}
+			}else{
+				Toast.makeText(ViewContact.this, "No email address provided", Toast.LENGTH_LONG).show();
 			}
+
 
 			return true;
 		default:

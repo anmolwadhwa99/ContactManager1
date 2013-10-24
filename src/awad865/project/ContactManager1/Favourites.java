@@ -88,15 +88,7 @@ public class Favourites extends Activity {
 		}
 	}
 
-	//If the user presses the overflow button (the button on the bottom right) then this
-	//method is triggered and the user is navigated to a new screen (the Option activity).
 
-	public void moreOptions(View view){
-		Intent option_intent = new Intent(this,OptionActivity.class);
-		option_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(option_intent);
-
-	}
 	//if the user clicks on an item in the ListView, then the first name 
 	//and last name are stored in variables and passed as a bundle 
 	//to the ViewContact activity and the ViewContact activity is opened.
